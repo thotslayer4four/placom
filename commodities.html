@@ -1,0 +1,598 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commodities - PLACOM</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="stylesheet" href="css/style.css?v=5">
+    <style>
+        .commodity-showcase-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2rem;margin-top:3rem;}
+        .section-minerals .commodity-showcase-grid{grid-template-columns:repeat(4,minmax(0,1fr));}
+        @media(min-width:992px){.section-minerals .commodity-showcase-grid .commodity-card:nth-child(9){grid-column:2;}}
+        .commodity-card{background:#fff;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 2px 8px rgba(0,0,0,0.10),0 8px 24px rgba(0,0,0,0.12);border:1px solid #c8d4c5;}
+        .commodity-card-img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;}
+        .commodity-card-body{padding:0.75rem 1rem 1rem;gap:0.3rem;}
+        .commodity-card-label{font-size:0.68rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#0a6344;display:block;margin-bottom:0;}
+        .commodity-card-title{font-size:1rem;font-weight:700;color:#112c2a;margin:0;line-height:1.28;letter-spacing:-0.02em;}
+        .commodity-card-text{font-size:0.85rem;color:#4b6364;line-height:1.5;margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+        .commodity-card-label--mineral{color:#9a6f10;}
+        .section-commodities{background:linear-gradient(180deg,#f4f7f2 0%,#eaefe6 100%);padding:clamp(4rem,7vw,7rem) 0;}
+        .section-minerals{background:linear-gradient(180deg,#132116 0%,#09120c 100%);padding:clamp(4rem,7vw,7rem) 0;}
+        .section-minerals .section-kicker{color:#d6b863;background:rgba(214,184,99,0.12);border-color:rgba(214,184,99,0.2);}
+        .section-minerals .section-title,.section-minerals .section-title-centered{background:none;-webkit-background-clip:unset;background-clip:unset;-webkit-text-fill-color:#fff;color:#fff;}
+        .section-minerals .section-text,.section-minerals .section-text-centered{color:rgba(255,255,255,0.72);}
+        .section-minerals .commodity-card{border-color:rgba(255,255,255,0.14);box-shadow:0 2px 8px rgba(0,0,0,0.3),0 8px 24px rgba(0,0,0,0.25);}
+        @media(max-width:991.98px){
+            .commodity-showcase-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+            .section-minerals .commodity-showcase-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+        }
+        @media(max-width:575.98px){
+            .commodity-showcase-grid{grid-template-columns:1fr;}
+            .section-minerals .commodity-showcase-grid{grid-template-columns:1fr;}
+        }
+    </style>
+</head>
+
+<body>
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <span class="brand-icon" aria-hidden="true">
+                    <img src="assets/img/logo.svg" alt="PLACOM Logo" class="logo-img">
+                </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Company</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="about.html">About</a></li>
+                        <li><a class="dropdown-item" href="what-we-do.html">What We Do</a></li>
+                        <li><a class="dropdown-item" href="leadership.html">Leadership</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Engage</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="invest.html">Invest</a></li>
+                        <li><a class="dropdown-item" href="export.html">Export</a></li>
+                        <li><a class="dropdown-item" href="tourism.html">Tourism</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link active" href="commodities.html">Commodities</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                <li class="nav-item ms-lg-2"><a class="btn btn-nav-cta" href="invest.html">Partner With Us</a></li>
+            </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section hero-commodities">
+        <div class="hero-overlay"></div>
+        <div class="container px-4 px-lg-5 hero-content">
+            <p class="hero-eyebrow mb-3">COMMODITIES &amp; RESOURCES</p>
+            <h1 class="hero-title mb-4">Plateau State's Primary Economic Assets</h1>
+            <p class="hero-description mb-5">
+                From Irish potatoes and strawberries to cassiterite and columbite — Plateau State's near-temperate climate and mineral-rich terrain produce commodities found nowhere else in Nigeria's tropics.
+            </p>
+        </div>
+    </section>
+</header>
+
+<main>
+    <!-- Agricultural Commodities -->
+    <section class="info-section section-commodities">
+        <div class="container px-4 px-lg-5">
+            <div class="row justify-content-center text-center">
+                <div class="col-12 col-lg-8">
+                    <p class="section-kicker mb-3">AGRICULTURAL COMMODITIES</p>
+                    <h2 class="section-title section-title-centered mb-4">Nigeria's Temperate Produce Basket</h2>
+                    <p class="section-text section-text-centered mb-0">
+                        At 1,200m above sea level, Plateau State's highland climate produces premium-quality crops unavailable in Nigeria's tropical lowlands. PLACOM organizes, certifies, and markets these unique agricultural assets.
+                    </p>
+                </div>
+            </div>
+
+            <div class="commodity-showcase-grid">
+                <article class="commodity-card">
+                    <img src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&w=800&q=80"
+                        alt="Irish potatoes from Plateau State"
+                        class="commodity-card-img" loading="lazy">
+                    <div class="commodity-card-body">
+                        <span class="commodity-card-label">FLAGSHIP CROP</span>
+                        <h3 class="commodity-card-title">Irish Potatoes</h3>
+                        <p class="commodity-card-text">Nigeria's largest producer. Plateau State's cool highlands yield high-quality tubers supplying markets across the nation and growing export demand.</p>
+                    </div>
+                </article>
+
+                <article class="commodity-card">
+                    <img src="https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=800&q=80"
+                        alt="Tomatoes harvested in Plateau State"
+                        class="commodity-card-img" loading="lazy">
+                    <div class="commodity-card-body">
+                        <span class="commodity-card-label">STRATEGIC STAPLE</span>
+                        <h3 class="commodity-card-title">Tomatoes</h3>
+                        <p class="commodity-card-text">A national food security crop produced in large quantities, feeding domestic processing industries and fresh markets across Nigeria.</p>
+                    </div>
+                </article>
+
+                <article class="commodity-card">
+                    <img src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&fit=crop&w=800&q=80"
+                        alt="Strawberries grown in Plateau State"
+                        class="commodity-card-img" loading="lazy">
+                    <div class="commodity-card-body">
+                        <span class="commodity-card-label">PREMIUM EXPORT</span>
+                        <h3 class="commodity-card-title">Strawberries</h3>
+                        <p class="commodity-card-text">One of Nigeria's very few strawberry-producing regions. High value, export-ready with strong demand from hospitality and food processing sectors.</p>
+                    </div>
+                </article>
+
+                <article class="commodity-card">
+                    <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=80"
+                        alt="Fresh vegetables from Plateau highlands"
+                        class="commodity-card-img" loading="lazy">
+                    <div class="commodity-card-body">
+                        <span class="commodity-card-label">HIGHLAND VEGETABLES</span>
+                        <h3 class="commodity-card-title">Vegetables</h3>
+                        <p class="commodity-card-text">Cabbage, carrots, onions, spinach, peas, and green beans grown in Plateau's cool climate command premium prices in southern Nigerian markets.</p>
+                    </div>
+                </article>
+
+                <article class="commodity-card">
+                    <img src="images/grains.png"
+                        alt="Grain crops including soybean and sorghum"
+                        class="commodity-card-img" loading="lazy">
+                    <div class="commodity-card-body">
+                        <span class="commodity-card-label">GRAINS &amp; CEREALS</span>
+                        <h3 class="commodity-card-title">Grains &amp; Legumes</h3>
+                        <p class="commodity-card-text">Soybean, sorghum, millet, and maize — supporting domestic food security and feeding livestock value chains across Northern Nigeria.</p>
+                    </div>
+                </article>
+
+                <article class="commodity-card">
+                    <img src="https://images.unsplash.com/photo-1619566636858-adf3ef46400b?auto=format&fit=crop&w=800&q=80"
+                        alt="Fruits and spices from Plateau State"
+                        class="commodity-card-img" loading="lazy">
+                    <div class="commodity-card-body">
+                        <span class="commodity-card-label">FRUITS &amp; SPICES</span>
+                        <h3 class="commodity-card-title">Fruits &amp; Spices</h3>
+                        <p class="commodity-card-text">Unique highland fruits — plums, guavas, pears — alongside pepper varieties and spices that thrive in Plateau's distinctive microclimate.</p>
+                    </div>
+                </article>
+
+                <article class="commodity-card">
+                    <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=800&q=80"
+                        alt="Maize crop"
+                        class="commodity-card-img" loading="lazy">
+                    <div class="commodity-card-body">
+                        <span class="commodity-card-label">STAPLE CROP</span>
+                        <h3 class="commodity-card-title">Maize</h3>
+                        <p class="commodity-card-text">A major staple crop supporting food security, livestock production and industrial processing across Plateau State and beyond.</p>
+                    </div>
+                </article>
+
+                <article class="commodity-card">
+                    <img src="https://images.unsplash.com/photo-1536304993881-ff86e0c9dc1e?auto=format&fit=crop&w=800&q=80"
+                        alt="Rice production"
+                        class="commodity-card-img" loading="lazy">
+                    <div class="commodity-card-body">
+                        <span class="commodity-card-label">STAPLE CROP</span>
+                        <h3 class="commodity-card-title">Rice</h3>
+                        <p class="commodity-card-text">Produced across various farming communities and increasingly integrated into organized market systems and processing value chains.</p>
+                    </div>
+                </article>
+
+                <article class="commodity-card">
+                    <img src="https://images.unsplash.com/photo-1598030304671-5aa1d6f21128?auto=format&fit=crop&w=800&q=80"
+                        alt="Cabbage cultivation"
+                        class="commodity-card-img" loading="lazy">
+                    <div class="commodity-card-body">
+                        <span class="commodity-card-label">VEGETABLE</span>
+                        <h3 class="commodity-card-title">Cabbage</h3>
+                        <p class="commodity-card-text">A high-demand vegetable cultivated extensively in Plateau State's temperate farming zones, supplying markets across Nigeria.</p>
+                    </div>
+                </article>
+
+                <article class="commodity-card">
+                    <img src="https://images.unsplash.com/photo-1445282768818-728615cc910a?auto=format&fit=crop&w=800&q=80"
+                        alt="Carrot harvest"
+                        class="commodity-card-img" loading="lazy">
+                    <div class="commodity-card-body">
+                        <span class="commodity-card-label">VEGETABLE</span>
+                        <h3 class="commodity-card-title">Carrots</h3>
+                        <p class="commodity-card-text">Commercially cultivated for domestic consumption and food processing markets, benefiting from Plateau's cool highland climate.</p>
+                    </div>
+                </article>
+
+                <article class="commodity-card">
+                    <img src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&w=800&q=80"
+                        alt="Onion produce"
+                        class="commodity-card-img" loading="lazy">
+                    <div class="commodity-card-body">
+                        <span class="commodity-card-label">COMMODITY CROP</span>
+                        <h3 class="commodity-card-title">Onions</h3>
+                        <p class="commodity-card-text">An important commodity supporting food markets and commercial agricultural trade across Northern Nigeria and beyond.</p>
+                    </div>
+                </article>
+
+                <article class="commodity-card">
+                    <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=800&q=80"
+                        alt="Soybeans"
+                        class="commodity-card-img" loading="lazy">
+                    <div class="commodity-card-body">
+                        <span class="commodity-card-label">INDUSTRIAL CROP</span>
+                        <h3 class="commodity-card-title">Soybeans</h3>
+                        <p class="commodity-card-text">A strategic industrial crop utilized in food processing, livestock feed production and export markets — high potential for value addition.</p>
+                    </div>
+                </article>
+
+                <article class="commodity-card">
+                    <img src="https://images.unsplash.com/photo-1615485500704-8e990f9900f7?auto=format&fit=crop&w=800&q=80"
+                        alt="Ginger root"
+                        class="commodity-card-img" loading="lazy">
+                    <div class="commodity-card-body">
+                        <span class="commodity-card-label">HIGH-VALUE EXPORT</span>
+                        <h3 class="commodity-card-title">Ginger</h3>
+                        <p class="commodity-card-text">A high-value agricultural commodity with strong and growing export and processing potential in global spice and pharmaceutical markets.</p>
+                    </div>
+                </article>
+
+                <article class="commodity-card">
+                    <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=800&q=80"
+                        alt="Sesame seeds"
+                        class="commodity-card-img" loading="lazy">
+                    <div class="commodity-card-body">
+                        <span class="commodity-card-label">EXPORT CROP</span>
+                        <h3 class="commodity-card-title">Sesame (Beniseed)</h3>
+                        <p class="commodity-card-text">A major Nigerian export crop with high demand in Asian markets for oil, food manufacturing and cosmetic applications.</p>
+                    </div>
+                </article>
+
+                <article class="commodity-card">
+                    <img src="https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?auto=format&fit=crop&w=800&q=80"
+                        alt="Groundnuts"
+                        class="commodity-card-img" loading="lazy">
+                    <div class="commodity-card-body">
+                        <span class="commodity-card-label">AGRO-INDUSTRIAL</span>
+                        <h3 class="commodity-card-title">Groundnuts</h3>
+                        <p class="commodity-card-text">An important commodity for food processing, edible oil production and agro-industrial development with strong domestic and export demand.</p>
+                    </div>
+                </article>
+
+                <article class="commodity-card">
+                    <img src="https://images.unsplash.com/photo-1499125562588-29fb8a56b5d5?auto=format&fit=crop&w=800&q=80"
+                        alt="Acha fonio grain"
+                        class="commodity-card-img" loading="lazy">
+                    <div class="commodity-card-body">
+                        <span class="commodity-card-label">HERITAGE GRAIN</span>
+                        <h3 class="commodity-card-title">Acha (Fonio)</h3>
+                        <p class="commodity-card-text">Nigeria's ancient nutritional grain — increasingly sought by health-conscious markets globally due to its high nutritional value and gluten-free properties.</p>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Livestock & Agribusiness -->
+    <section class="info-section section-mission">
+        <div class="container px-4 px-lg-5">
+            <div class="row justify-content-center text-center mb-5">
+                <div class="col-12 col-lg-8">
+                    <p class="section-kicker mb-3">LIVESTOCK &amp; AGRIBUSINESS</p>
+                    <h2 class="section-title section-title-centered mb-4">Integrated Animal &amp; Agribusiness Value Chains</h2>
+                    <p class="section-text section-text-centered mb-0">
+                        Plateau State also supports livestock and agribusiness value chains that contribute significantly to food security, rural income, and industrial development across the state. PLACOM works to strengthen these value chains through market coordination, supply chain development and investment partnerships.
+                    </p>
+                </div>
+            </div>
+            <div class="services-grid services-grid--cols-5">
+                <article class="service-item">
+                    <div class="service-icon-wrapper">
+                        <svg class="service-icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <h3 class="service-title">Dairy Production</h3>
+                    <p class="service-copy">Milk and dairy commodity value chains supporting local food processing and nutrition markets.</p>
+                </article>
+                <article class="service-item">
+                    <div class="service-icon-wrapper">
+                        <svg class="service-icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 8v4l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </div>
+                    <h3 class="service-title">Poultry</h3>
+                    <p class="service-copy">Chicken and egg production contributing to food security, local employment and growing agro-industrial demand.</p>
+                </article>
+                <article class="service-item">
+                    <div class="service-icon-wrapper">
+                        <svg class="service-icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="currentColor" stroke-width="2"/></svg>
+                    </div>
+                    <h3 class="service-title">Meat Processing</h3>
+                    <p class="service-copy">Beef, pork and small ruminant value chains with structured market linkages and processing potential.</p>
+                </article>
+                <article class="service-item">
+                    <div class="service-icon-wrapper">
+                        <svg class="service-icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <h3 class="service-title">Feed Production</h3>
+                    <p class="service-copy">Animal feed manufacturing leveraging Plateau's grain surplus to reduce production costs and improve livestock productivity.</p>
+                </article>
+                <article class="service-item">
+                    <div class="service-icon-wrapper">
+                        <svg class="service-icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <h3 class="service-title">Horticulture</h3>
+                    <p class="service-copy">Commercial flower, ornamental and specialty crop production supported by Plateau's temperate highlands.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solid Minerals -->
+    <section class="section-minerals">
+        <div class="container px-4 px-lg-5">
+            <div class="row justify-content-center text-center">
+                <div class="col-12 col-lg-8">
+                    <p class="section-kicker mb-3">SOLID MINERALS</p>
+                    <h2 class="section-title section-title-centered mb-4">Rich Mineral Deposits</h2>
+                    <p class="section-text section-text-centered mb-0">
+                        Plateau State sits on one of West Africa's richest mineral belts. PLACOM supports artisanal miners and cooperatives with structured aggregation, quality assurance, and market linkage for the state's mineral resources.
+                    </p>
+                </div>
+            </div>
+
+            <div class="commodity-showcase-grid">
+                <article class="commodity-card">
+                    <img src="images/carousel/tin-ore.jpg"
+                        alt="Tin mining operations"
+                        class="commodity-card-img" loading="lazy">
+                    <div class="commodity-card-body">
+                        <span class="commodity-card-label commodity-card-label--mineral">HISTORIC INDUSTRY</span>
+                        <h3 class="commodity-card-title">Cassiterite (Tin Ore)</h3>
+                        <p class="commodity-card-text">Plateau State was once the world's leading tin producer. Rich cassiterite deposits remain and are being revitalized through structured mining facilitation.</p>
+                    </div>
+                </article>
+
+                <article class="commodity-card">
+                    <img src="images/columbite.jpeg"
+                        alt="Columbite mineral samples"
+                        class="commodity-card-img" loading="lazy">
+                    <div class="commodity-card-body">
+                        <span class="commodity-card-label commodity-card-label--mineral">HIGH GLOBAL DEMAND</span>
+                        <h3 class="commodity-card-title">Columbite</h3>
+                        <p class="commodity-card-text">Niobium-bearing ore essential for high-strength steel alloys and electronics. Plateau's columbite deposits position Nigeria in the global critical minerals supply chain.</p>
+                    </div>
+                </article>
+
+                <article class="commodity-card">
+                    <img src="images/gemstones.png"
+                        alt="Gemstones from Plateau State"
+                        class="commodity-card-img" loading="lazy">
+                    <div class="commodity-card-body">
+                        <span class="commodity-card-label commodity-card-label--mineral">PREMIUM VALUE</span>
+                        <h3 class="commodity-card-title">Gemstones</h3>
+                        <p class="commodity-card-text">Amethyst, topaz, aquamarine, tourmaline, and other precious stones found in Plateau State command premium prices in international gem markets.</p>
+                    </div>
+                </article>
+
+                <article class="commodity-card">
+                    <img src="images/carousel/limestone.jpg"
+                        alt="Industrial limestone quarry"
+                        class="commodity-card-img" loading="lazy">
+                    <div class="commodity-card-body">
+                        <span class="commodity-card-label commodity-card-label--mineral">INDUSTRIAL MINERAL</span>
+                        <h3 class="commodity-card-title">Limestone</h3>
+                        <p class="commodity-card-text">Large limestone deposits support cement manufacturing and construction industries, with growing demand from Nigeria's infrastructure development push.</p>
+                    </div>
+                </article>
+
+                <article class="commodity-card">
+                    <img src="images/Kaolin-Clay.jpg"
+                        alt="Kaolin clay mineral"
+                        class="commodity-card-img" loading="lazy">
+                    <div class="commodity-card-body">
+                        <span class="commodity-card-label commodity-card-label--mineral">VERSATILE MINERAL</span>
+                        <h3 class="commodity-card-title">Kaolin &amp; Clay</h3>
+                        <p class="commodity-card-text">High-quality kaolin deposits used in ceramics, pharmaceuticals, paper, and paint manufacturing. Significant export potential to regional industries.</p>
+                    </div>
+                </article>
+
+                <article class="commodity-card">
+                    <img src="images/Feldspar and quartz minerals.jpeg"
+                        alt="Feldspar and quartz minerals"
+                        class="commodity-card-img" loading="lazy">
+                    <div class="commodity-card-body">
+                        <span class="commodity-card-label commodity-card-label--mineral">GLASS &amp; CERAMICS</span>
+                        <h3 class="commodity-card-title">Feldspar &amp; Quartz</h3>
+                        <p class="commodity-card-text">Raw materials for Nigeria's glass and ceramics industries, with growing demand from domestic manufacturing and construction sectors.</p>
+                    </div>
+                </article>
+
+                <article class="commodity-card">
+                    <img src="https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=800&q=80"
+                        alt="Tantalite mineral"
+                        class="commodity-card-img" loading="lazy">
+                    <div class="commodity-card-body">
+                        <span class="commodity-card-label commodity-card-label--mineral">STRATEGIC MINERAL</span>
+                        <h3 class="commodity-card-title">Tantalite</h3>
+                        <p class="commodity-card-text">A critical mineral used in electronics manufacturing, capacitors, and high-tech applications — increasingly valued in global markets.</p>
+                    </div>
+                </article>
+
+                <article class="commodity-card">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80"
+                        alt="Wolframite mineral"
+                        class="commodity-card-img" loading="lazy">
+                    <div class="commodity-card-body">
+                        <span class="commodity-card-label commodity-card-label--mineral">INDUSTRIAL MINERAL</span>
+                        <h3 class="commodity-card-title">Wolframite</h3>
+                        <p class="commodity-card-text">A tungsten-bearing mineral used in the manufacture of hard metals, tool steel, and high-performance alloys for industrial applications.</p>
+                    </div>
+                </article>
+
+                <article class="commodity-card">
+                    <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=800&q=80"
+                        alt="Zircon mineral"
+                        class="commodity-card-img" loading="lazy">
+                    <div class="commodity-card-body">
+                        <span class="commodity-card-label commodity-card-label--mineral">INDUSTRIAL MINERAL</span>
+                        <h3 class="commodity-card-title">Zircon</h3>
+                        <p class="commodity-card-text">Used in ceramics, refractory materials, and nuclear applications — Plateau State holds notable deposits with strong export potential.</p>
+                    </div>
+                </article>
+
+                <article class="commodity-card">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80"
+                        alt="Granite quarry"
+                        class="commodity-card-img" loading="lazy">
+                    <div class="commodity-card-body">
+                        <span class="commodity-card-label commodity-card-label--mineral">CONSTRUCTION MINERAL</span>
+                        <h3 class="commodity-card-title">Granite</h3>
+                        <p class="commodity-card-text">An abundant construction and architectural material with high demand in Nigeria's booming infrastructure and real estate sectors.</p>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PLACOM's Role -->
+    <section class="info-section">
+        <div class="container px-4 px-lg-5">
+            <div class="row justify-content-center text-center">
+                <div class="col-12">
+                    <p class="section-kicker mb-3">PLACOM'S ROLE</p>
+                    <h2 class="section-title mb-0" style="max-width:none;">How PLACOM adds value across commodity sectors.</h2>
+                </div>
+            </div>
+
+            <div class="services-grid mt-5 mt-lg-5 services-grid--cols-4">
+                <article class="service-item">
+                    <div class="service-icon-wrapper">
+                        <svg class="service-icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Grading &amp; Certification</h3>
+                    <p class="service-copy">PLACOM certifies commodities to national and international standards, unlocking access to premium markets and export channels.</p>
+                </article>
+                <article class="service-item">
+                    <div class="service-icon-wrapper">
+                        <svg class="service-icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 21V7C3 5.89543 3.89543 5 5 5H19C20.1046 5 21 5.89543 21 7V21" stroke="currentColor" stroke-width="2"/>
+                            <path d="M7 3V7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M17 3V7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M3 11H21" stroke="currentColor" stroke-width="2"/>
+                            <path d="M9 15H15" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Aggregation &amp; Storage</h3>
+                    <p class="service-copy">Certified warehouses consolidate small farmer and miner outputs into commercially viable volumes for market and export.</p>
+                </article>
+                <article class="service-item">
+                    <div class="service-icon-wrapper">
+                        <svg class="service-icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                            <path d="M2 12H22" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 2C12 2 8 7 8 12C8 17 12 22 12 22" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 2C12 2 16 7 16 12C16 17 12 22 12 22" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Market Linkage</h3>
+                    <p class="service-copy">Connecting Plateau's producers to commodity exchanges, international buyers, and export markets through PLACOM's trade network.</p>
+                </article>
+                <article class="service-item">
+                    <div class="service-icon-wrapper">
+                        <svg class="service-icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 3V21H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M7 13L11 9L15 13L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Price Stabilization</h3>
+                    <p class="service-copy">Market intervention mechanisms and warehouse receipt financing protect farmers and miners from seasonal price volatility.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="join-section">
+        <div class="join-overlay"></div>
+        <div class="container px-4 px-lg-5 join-content text-center">
+            <h2 class="join-title mb-4">Trade Plateau's Commodities</h2>
+            <p class="join-text mb-4">
+                Whether you're a buyer, trader, exporter, or investor — connect with PLACOM to access Plateau State's premium commodity base.
+            </p>
+            <a href="contact.html" class="btn btn-gold join-btn px-4 py-3">Get In Touch <span class="ms-1">→</span></a>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="container px-4 px-lg-5 footer-inner">
+        <div class="footer-top">
+            <div class="footer-brand-col">
+                <a class="footer-brand" href="index.html">
+                    <img src="assets/img/logo-footer.svg" alt="PLACOM Logo" class="footer-logo-img">
+                </a>
+                <p class="footer-intro mb-0">
+                    Integrated commodity marketing, supply chain management, and agro–solid minerals industrial facilitation for Plateau State and beyond.
+                </p>
+            </div>
+            <div class="footer-links-col">
+                <p class="footer-heading mb-3">COMPANY</p>
+                <ul class="footer-links list-unstyled mb-0">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="leadership.html">Leadership</a></li>
+                    <li><a href="what-we-do.html">Services</a></li>
+                    <li><a href="ecosystem.html">Ecosystem</a></li>
+                    <li><a href="commodities.html">Commodities</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-col">
+                <p class="footer-heading mb-3">ENGAGE</p>
+                <ul class="footer-links list-unstyled mb-0">
+                    <li><a href="tourism.html">Tourism</a></li>
+                    <li><a href="invest.html">Invest</a></li>
+                    <li><a href="export.html">Export &amp; Trade</a></li>
+                    <li><a href="warehouse.html">Warehouses</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="insights.html">Insights</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-col">
+                <p class="footer-heading mb-3">LOCATION</p>
+                <p class="footer-location mb-0">JD Gomwalk Secretariat<br>Jos, Plateau State<br>Nigeria</p>
+            </div>
+        </div>
+        <div class="footer-social-row">
+            <p class="footer-heading mb-0" style="font-size:0.7rem;letter-spacing:0.1em;">FOLLOW US</p>
+            <a href="https://facebook.com/placomlimited" target="_blank" rel="noopener" class="footer-social-link" aria-label="Facebook">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://x.com/placomlimited" target="_blank" rel="noopener" class="footer-social-link" aria-label="X (Twitter)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://instagram.com/placomlimited" target="_blank" rel="noopener" class="footer-social-link" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://youtube.com/@placomlimited" target="_blank" rel="noopener" class="footer-social-link" aria-label="YouTube">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#1a2e1a"/></svg>
+            </a>
+        </div>
+        <div class="footer-rule" aria-hidden="true"></div>
+        <div class="footer-bottom">
+            <p class="footer-legal mb-0">© 2026 PLACOM. All rights reserved.</p>
+            <p class="footer-initiative mb-0">A Plateau State Government Initiative</p>
+        </div>
+    </div>
+</footer>
+<script src="js/site.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+</body></html>

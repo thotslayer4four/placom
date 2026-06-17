@@ -1,0 +1,342 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invest - PLACOM</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="stylesheet" href="css/style.css?v=8">
+    <style>
+        .warehouse-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.75rem; margin-top: 3rem; align-items: stretch; }
+        .warehouse-card { background: #fff; border: 1px solid #c8d8cc; border-left: 4px solid #1f7a43; border-radius: 12px; padding: 2rem 1.75rem; display: flex; flex-direction: column; box-shadow: 0 2px 8px rgba(0,0,0,0.08), 0 6px 20px rgba(0,0,0,0.07); transition: all 0.3s ease; }
+        @media (hover: hover) { .warehouse-card:hover { box-shadow: 0 8px 28px rgba(31,122,67,0.14); transform: translateY(-5px); border-left-color: var(--placom-gold); } }
+        .warehouse-card-icon { width: 48px; height: 48px; background: linear-gradient(135deg, rgba(31,122,67,0.12), rgba(200,168,75,0.08)); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.1rem; color: #1f7a43; border: 1px solid rgba(31,122,67,0.2); flex-shrink: 0; }
+        .warehouse-card-title { font-size: 1.08rem; font-weight: 700; color: #17343d; margin: 0 0 0.6rem; line-height: 1.28; letter-spacing: -0.01em; }
+        .warehouse-card-text { font-size: 0.9rem; color: #526a73; line-height: 1.6; margin: 0; flex: 1; }
+        @media (max-width: 991.98px) { .warehouse-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+
+<body>
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <span class="brand-icon" aria-hidden="true">
+                    <img src="assets/img/logo.svg" alt="PLACOM Logo" class="logo-img">
+                </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Company</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="about.html">About</a></li>
+                        <li><a class="dropdown-item" href="what-we-do.html">What We Do</a></li>
+                        <li><a class="dropdown-item" href="leadership.html">Leadership</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Engage</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item active" href="invest.html">Invest</a></li>
+                        <li><a class="dropdown-item" href="export.html">Export</a></li>
+                        <li><a class="dropdown-item" href="tourism.html">Tourism</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="commodities.html">Commodities</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                <li class="nav-item ms-lg-2"><a class="btn btn-nav-cta" href="invest.html">Partner With Us</a></li>
+            </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section hero-invest">
+        <div class="hero-overlay"></div>
+        <div class="container px-4 px-lg-5 hero-content">
+            <p class="hero-eyebrow mb-3">INVESTMENT &amp; PARTNERSHIPS</p>
+            <h1 class="hero-title mb-4">Partner With PLACOM</h1>
+            <p class="hero-description mb-5">
+                Strategic partners across the commodity value chain are shaping the future of Plateau State's agricultural economy.
+            </p>
+            <div class="d-flex flex-wrap gap-3">
+                <a href="contact.html" class="btn btn-gold px-4 py-3">Contact Our Team <span class="ms-1">→</span></a>
+            </div>
+        </div>
+    </section>
+</header>
+
+<main>
+    <section class="info-section section-mission">
+        <div class="container px-4 px-lg-5">
+            <div class="row justify-content-center text-center">
+                <div class="col-12 col-lg-8">
+                    <p class="section-kicker mb-3">WHO WE WORK WITH</p>
+                    <h2 class="section-title section-title-centered mb-4">Strategic partners across the commodity value chain.</h2>
+                    <p class="section-text section-text-centered mb-5">
+                        PLACOM works with a diverse ecosystem of private and institutional partners to build Plateau State's agricultural future.
+                    </p>
+                </div>
+            </div>
+            <div class="alliances-grid alliances-grid--3col" role="list" aria-label="Partner categories">
+                <article class="alliance-card" role="listitem">Commodity Traders</article>
+                <article class="alliance-card" role="listitem">Exporters</article>
+                <article class="alliance-card" role="listitem">Agribusiness Investors</article>
+                <article class="alliance-card" role="listitem">Financial Institutions</article>
+                <article class="alliance-card" role="listitem">Cooperatives</article>
+                <article class="alliance-card" role="listitem">International Buyers</article>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-section section-services">
+        <div class="container px-4 px-lg-5">
+            <div class="row justify-content-center text-center">
+                <div class="col-12">
+                    <p class="section-kicker mb-3">OPPORTUNITIES</p>
+                    <h2 class="section-title mb-0" style="max-width:none;">Investment opportunities in Plateau's commodity ecosystem.</h2>
+                </div>
+            </div>
+            <div class="services-grid mt-5 mt-lg-5 services-grid--cols-3">
+                <article class="service-item">
+                    <div class="service-icon-wrapper">
+                        <svg class="service-icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 21V7C3 5.89543 3.89543 5 5 5H19C20.1046 5 21 5.89543 21 7V21" stroke="currentColor" stroke-width="2"/>
+                            <path d="M7 3V7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M17 3V7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M3 11H21" stroke="currentColor" stroke-width="2"/>
+                            <path d="M9 15H15" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Warehouse Development</h3>
+                    <p class="service-copy">Invest in modern, certified warehouse infrastructure across Plateau State's key commodity corridors.</p>
+                </article>
+                <article class="service-item">
+                    <div class="service-icon-wrapper">
+                        <svg class="service-icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Agro-Processing Zones</h3>
+                    <p class="service-copy">Develop processing facilities that add value to raw commodities and create employment.</p>
+                </article>
+                <article class="service-item">
+                    <div class="service-icon-wrapper">
+                        <svg class="service-icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 3V21H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M7 13L11 9L15 13L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Commodity Trading Platforms</h3>
+                    <p class="service-copy">Partner on digital commodity trading and market information technology platforms.</p>
+                </article>
+                <article class="service-item">
+                    <div class="service-icon-wrapper">
+                        <svg class="service-icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 7V17C3 18.1046 3.89543 19 5 19H19C20.1046 19 21 18.1046 21 17V7" stroke="currentColor" stroke-width="2"/>
+                            <path d="M8 5C8 3.89543 8.89543 3 10 3H14C15.1046 3 16 3.89543 16 5V7H8V5Z" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="7" cy="12" r="1" fill="currentColor"/>
+                            <circle cx="12" cy="12" r="1" fill="currentColor"/>
+                            <circle cx="17" cy="12" r="1" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Logistics Infrastructure</h3>
+                    <p class="service-copy">Build cold chain logistics, transportation, and distribution networks that move commodities from farm gate to domestic and export markets.</p>
+                </article>
+                <article class="service-item">
+                    <div class="service-icon-wrapper">
+                        <svg class="service-icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 1 0 0 7h5a3.5 3.5 0 1 1 0 7H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <h3 class="service-title">Commodity Financing</h3>
+                    <p class="service-copy">Participate through warehouse receipt financing, commodity-backed lending, value chain finance, and agricultural investment programmes alongside PLACOM and financial institution partners.</p>
+                </article>
+                <article class="service-item">
+                    <div class="service-icon-wrapper">
+                        <svg class="service-icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="3" width="20" height="14" rx="2" ry="2" stroke="currentColor" stroke-width="2"/><path d="M8 21h8M12 17v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </div>
+                    <h3 class="service-title">Digital &amp; ICT Solutions</h3>
+                    <p class="service-copy">Invest in commodity trading platforms, market information systems, warehouse management technology, and data analytics infrastructure in collaboration with PICTDA.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Access & Export Potential -->
+    <section class="info-section section-services">
+        <div class="container px-4 px-lg-5">
+            <div class="row justify-content-center text-center mb-5">
+                <div class="col-12 col-lg-8">
+                    <p class="section-kicker mb-3">MARKET ACCESS &amp; EXPORT POTENTIAL</p>
+                    <h2 class="section-title section-title-centered mb-4">Gateway to Regional &amp; International Markets</h2>
+                    <p class="section-text section-text-centered mb-0">
+                        PLACOM supports access to domestic commodity markets, regional trade opportunities, organized commodity exchanges, and international commodity networks. The company is positioned to support scalable trade and investment operations under AfCFTA and AGOA — opening regional export markets across Africa, Europe, and beyond.
+                    </p>
+                </div>
+            </div>
+            <div class="services-grid services-grid--cols-4">
+                <article class="service-item">
+                    <div class="service-icon-wrapper">
+                        <svg class="service-icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M2 12H22M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="currentColor" stroke-width="2"/></svg>
+                    </div>
+                    <h3 class="service-title">AfCFTA Alignment</h3>
+                    <p class="service-copy">Leverage the African Continental Free Trade Area to access duty-reduced commodity trade across 54 African nations.</p>
+                </article>
+                <article class="service-item">
+                    <div class="service-icon-wrapper">
+                        <svg class="service-icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 3V21H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 13L11 9L15 13L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <h3 class="service-title">AGOA Market Access</h3>
+                    <p class="service-copy">Export eligible agricultural commodities to the United States under preferential duty-free terms through the African Growth and Opportunity Act.</p>
+                </article>
+                <article class="service-item">
+                    <div class="service-icon-wrapper">
+                        <svg class="service-icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="currentColor" stroke-width="2"/></svg>
+                    </div>
+                    <h3 class="service-title">Commodity Exchanges</h3>
+                    <p class="service-copy">Access structured commodity trading through the NCX, AFEX, and Lagos Commodities and Futures Exchange for transparent price discovery and contract execution.</p>
+                </article>
+                <article class="service-item">
+                    <div class="service-icon-wrapper">
+                        <svg class="service-icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17 20H7C5.89543 20 5 19.1046 5 18V9C5 7.89543 5.89543 7 7 7H17C18.1046 7 19 7.89543 19 9V18C19 19.1046 18.1046 20 17 20Z" stroke="currentColor" stroke-width="2"/><path d="M12 3V7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </div>
+                    <h3 class="service-title">Institutional Buyers</h3>
+                    <p class="service-copy">Direct access to government procurement, food processors, large-scale distributors, and international import partners seeking certified commodities.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Warehouse Finance & Price Stabilization -->
+    <section class="info-section section-mission">
+        <div class="container px-4 px-lg-5">
+            <div class="row justify-content-center text-center">
+                <div class="col-12 col-lg-8">
+                    <p class="section-kicker mb-3">STRUCTURED FINANCE</p>
+                    <h2 class="section-title section-title-centered mb-4">Warehouse Receipt Systems &amp; Price Stabilization</h2>
+                    <p class="section-text section-text-centered mb-0">
+                        PLACOM's warehouse infrastructure does more than store commodities — it creates a financial ecosystem that unlocks credit for farmers, stabilizes prices, and gives institutional investors a bankable asset class backed by certified commodity stocks.
+                    </p>
+                </div>
+            </div>
+            <div class="warehouse-grid">
+                <article class="warehouse-card">
+                    <div class="warehouse-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+                            <path d="M3 21V7C3 5.89543 3.89543 5 5 5H19C20.1046 5 21 5.89543 21 7V21" stroke="currentColor" stroke-width="2"/>
+                            <path d="M7 3V7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M17 3V7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M3 11H21" stroke="currentColor" stroke-width="2"/>
+                            <path d="M9 15H15" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="warehouse-card-title">Warehouse Receipt Finance</h3>
+                    <p class="warehouse-card-text">PLACOM-certified warehouses issue receipts against stored commodities. Farmers and cooperatives use these receipts as collateral to access affordable working capital loans from financial institutions — without selling at harvest-time low prices.</p>
+                </article>
+                <article class="warehouse-card">
+                    <div class="warehouse-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+                            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 12V22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M19 9.3C19.5 9.8 20 10.8 20 12C20 13.2 19.5 14.2 19 14.7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="warehouse-card-title">Price Stabilization Mechanisms</h3>
+                    <p class="warehouse-card-text">PLACOM operates market intervention mechanisms that smooth seasonal price swings. By holding certified buffer stocks and timing market releases strategically, PLACOM protects farmers from post-harvest price crashes and consumers from shortage-driven spikes.</p>
+                </article>
+                <article class="warehouse-card">
+                    <div class="warehouse-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+                            <path d="M3 3V21H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M7 13L11 9L15 13L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="warehouse-card-title">Commodity-Backed Investment</h3>
+                    <p class="warehouse-card-text">For institutional investors, PLACOM's commodity receipt infrastructure creates a new asset class: certified, insured, and physically-backed commodity positions in Nigerian agricultural markets. A bankable alternative to direct commodity ownership.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="join-section">
+        <div class="join-overlay"></div>
+        <div class="container px-4 px-lg-5 join-content text-center">
+            <h2 class="join-title mb-4">Ready to Invest?</h2>
+            <p class="join-text mb-4">
+                Contact our partnerships team to explore how you can be part of Plateau's agricultural transformation.
+            </p>
+            <a href="contact.html" class="btn btn-gold join-btn px-4 py-3">Contact Us <span class="ms-1">→</span></a>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="container px-4 px-lg-5 footer-inner">
+        <div class="footer-top">
+            <div class="footer-brand-col">
+                <a class="footer-brand" href="index.html">
+                    <img src="assets/img/logo-footer.svg" alt="PLACOM Logo" class="footer-logo-img">
+                </a>
+                <p class="footer-intro mb-0">
+                    Integrated commodity marketing, supply chain management, and agro–solid minerals industrial facilitation for Plateau State and beyond.
+                </p>
+            </div>
+            <div class="footer-links-col">
+                <p class="footer-heading mb-3">COMPANY</p>
+                <ul class="footer-links list-unstyled mb-0">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="leadership.html">Leadership</a></li>
+                    <li><a href="what-we-do.html">Services</a></li>
+                    <li><a href="ecosystem.html">Ecosystem</a></li>
+                    <li><a href="commodities.html">Commodities</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-col">
+                <p class="footer-heading mb-3">ENGAGE</p>
+                <ul class="footer-links list-unstyled mb-0">
+                    <li><a href="tourism.html">Tourism</a></li>
+                    <li><a href="invest.html">Invest</a></li>
+                    <li><a href="export.html">Export &amp; Trade</a></li>
+                    <li><a href="warehouse.html">Warehouses</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="insights.html">Insights</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-col">
+                <p class="footer-heading mb-3">LOCATION</p>
+                <p class="footer-location mb-0">JD Gomwalk Secretariat<br>Jos, Plateau State<br>Nigeria</p>
+            </div>
+        </div>
+        <div class="footer-social-row">
+            <p class="footer-heading mb-0" style="font-size:0.7rem;letter-spacing:0.1em;">FOLLOW US</p>
+            <a href="https://facebook.com/placomlimited" target="_blank" rel="noopener" class="footer-social-link" aria-label="Facebook">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://x.com/placomlimited" target="_blank" rel="noopener" class="footer-social-link" aria-label="X (Twitter)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://instagram.com/placomlimited" target="_blank" rel="noopener" class="footer-social-link" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://youtube.com/@placomlimited" target="_blank" rel="noopener" class="footer-social-link" aria-label="YouTube">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#1a2e1a"/></svg>
+            </a>
+        </div>
+        <div class="footer-rule" aria-hidden="true"></div>
+        <div class="footer-bottom">
+            <p class="footer-legal mb-0">© 2026 PLACOM. All rights reserved.</p>
+            <p class="footer-initiative mb-0">A Plateau State Government Initiative</p>
+        </div>
+    </div>
+</footer>
+<script src="js/site.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+</body></html>

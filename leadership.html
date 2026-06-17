@@ -1,0 +1,501 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leadership - PLACOM</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="stylesheet" href="css/style.css?v=8">
+    <style>
+        /* Leadership card styles */
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            justify-content: center;
+            gap: 1.75rem;
+        }
+        .leader-card {
+            background: #fff;
+            border: 1px solid #d6e0d3;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: box-shadow 0.25s, transform 0.25s;
+        }
+        .leader-card:hover {
+            box-shadow: 0 12px 36px rgba(15,60,30,0.13);
+            transform: translateY(-4px);
+        }
+        .leader-photo {
+            width: 100%;
+            aspect-ratio: 3/3.2;
+            object-fit: cover;
+            display: block;
+            background: #e8f0e5;
+        }
+        .leader-photo-placeholder {
+            width: 100%;
+            aspect-ratio: 3/3.2;
+            background: linear-gradient(135deg, #1c3023 0%, #2d5040 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        .leader-photo-placeholder svg {
+            width: 56px;
+            height: 56px;
+            color: rgba(255,255,255,0.35);
+        }
+        .leader-photo-placeholder span {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.35);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        .leader-body {
+            padding: 1.3rem 1.4rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        .leader-name {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #112c2a;
+            margin: 0 0 0.3rem;
+            line-height: 1.3;
+        }
+        .leader-title {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #0a6344;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin: 0 0 0.75rem;
+        }
+        .leader-bio {
+            font-size: 0.88rem;
+            color: #4b6364;
+            line-height: 1.65;
+            margin: 0;
+            flex: 1;
+        }
+        .section-divider {
+            height: 1px;
+            background: #d6e0d3;
+            margin: 0 0 3rem;
+        }
+        /* Board vs management distinction */
+        .leader-badge {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-bottom: 0.6rem;
+        }
+        .leader-badge--board {
+            background: #e8f5ec;
+            color: #0a6344;
+        }
+        .leader-badge--management {
+            background: #fff8e6;
+            color: #9a6f10;
+        }
+    </style>
+</head>
+<body>
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <span class="brand-icon" aria-hidden="true">
+                    <img src="assets/img/logo.svg" alt="PLACOM Logo" class="logo-img">
+                </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Company</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="about.html">About</a></li>
+                        <li><a class="dropdown-item" href="what-we-do.html">What We Do</a></li>
+                        <li><a class="dropdown-item active" href="leadership.html">Leadership</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Engage</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="invest.html">Invest</a></li>
+                        <li><a class="dropdown-item" href="export.html">Export</a></li>
+                        <li><a class="dropdown-item" href="tourism.html">Tourism</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="commodities.html">Commodities</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                <li class="nav-item ms-lg-2"><a class="btn btn-nav-cta" href="invest.html">Partner With Us</a></li>
+            </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section hero-about">
+        <div class="hero-overlay"></div>
+        <div class="container px-4 px-lg-5 hero-content">
+            <p class="hero-eyebrow mb-3">LEADERSHIP</p>
+            <h1 class="hero-title mb-4">Our Board &amp; Management Team</h1>
+            <p class="hero-description mb-5">
+                PLACOM is governed by a professional Board of Directors and led by a dedicated management team committed to building a transparent, accountable, and sustainable commodity ecosystem for Plateau State.
+            </p>
+        </div>
+    </section>
+</header>
+
+<main>
+
+    <!-- ============================================================
+         BOARD OF DIRECTORS
+         HOW TO EDIT: For each board member, replace:
+           - "Full Name" with the person's actual name
+           - "Title / Role" with their board role (e.g. Chairman, Non-Executive Director)
+           - The bio paragraph with a short profile (2–3 sentences)
+           - Replace the placeholder <div class="leader-photo-placeholder"> block
+             with: <img src="images/[photo-filename].jpg" alt="Name" class="leader-photo">
+         ============================================================ -->
+    <section class="info-section section-services">
+        <div class="container px-4 px-lg-5">
+            <div class="row justify-content-center text-center mb-5">
+                <div class="col-12 col-lg-8">
+                    <p class="section-kicker mb-3">BOARD OF DIRECTORS</p>
+                    <h2 class="section-title section-title-centered mb-4">Governance &amp; Oversight</h2>
+                    <p class="section-text section-text-centered mb-0">
+                        The Board of Directors provides strategic direction and governance oversight, ensuring PLACOM operates with accountability and in alignment with Plateau State's economic development objectives.
+                    </p>
+                </div>
+            </div>
+
+            <div class="leadership-grid">
+
+                <!-- BOARD MEMBER 1 — Replace with real details -->
+                <article class="leader-card">
+                    <div class="leader-photo-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M4 20c0-4 3.582-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        <span>Photo</span>
+                    </div>
+                    <div class="leader-body">
+                        <span class="leader-badge leader-badge--board">Board</span>
+                        <h3 class="leader-name">[ Chairman Name ]</h3>
+                        <p class="leader-title">Chairman, Board of Directors</p>
+                        <p class="leader-bio">[ Insert a 2–3 sentence profile of the Chairman here — background, professional experience, and relevance to PLACOM's mandate. ]</p>
+                    </div>
+                </article>
+
+                <!-- BOARD MEMBER 2 — Replace with real details -->
+                <article class="leader-card">
+                    <div class="leader-photo-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M4 20c0-4 3.582-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        <span>Photo</span>
+                    </div>
+                    <div class="leader-body">
+                        <span class="leader-badge leader-badge--board">Board</span>
+                        <h3 class="leader-name">[ Board Member Name ]</h3>
+                        <p class="leader-title">Non-Executive Director</p>
+                        <p class="leader-bio">[ Insert a 2–3 sentence profile here. ]</p>
+                    </div>
+                </article>
+
+                <!-- BOARD MEMBER 3 — Replace with real details -->
+                <article class="leader-card">
+                    <div class="leader-photo-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M4 20c0-4 3.582-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        <span>Photo</span>
+                    </div>
+                    <div class="leader-body">
+                        <span class="leader-badge leader-badge--board">Board</span>
+                        <h3 class="leader-name">[ Board Member Name ]</h3>
+                        <p class="leader-title">Non-Executive Director</p>
+                        <p class="leader-bio">[ Insert a 2–3 sentence profile here. ]</p>
+                    </div>
+                </article>
+
+                <!-- BOARD MEMBER 4 — Replace with real details -->
+                <article class="leader-card">
+                    <div class="leader-photo-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M4 20c0-4 3.582-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        <span>Photo</span>
+                    </div>
+                    <div class="leader-body">
+                        <span class="leader-badge leader-badge--board">Board</span>
+                        <h3 class="leader-name">[ Board Member Name ]</h3>
+                        <p class="leader-title">Non-Executive Director</p>
+                        <p class="leader-bio">[ Insert a 2–3 sentence profile here. ]</p>
+                    </div>
+                </article>
+
+                <!-- BOARD MEMBER 5 — Replace with real details -->
+                <article class="leader-card">
+                    <div class="leader-photo-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M4 20c0-4 3.582-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        <span>Photo</span>
+                    </div>
+                    <div class="leader-body">
+                        <span class="leader-badge leader-badge--board">Board</span>
+                        <h3 class="leader-name">[ Board Member Name ]</h3>
+                        <p class="leader-title">Non-Executive Director</p>
+                        <p class="leader-bio">[ Insert a 2–3 sentence profile here. ]</p>
+                    </div>
+                </article>
+
+                <!--
+                    TO ADD MORE BOARD MEMBERS, copy the block above and paste it here.
+                    Change the name, title, and bio. Replace the placeholder with a real photo if available.
+                -->
+
+            </div>
+        </div>
+    </section>
+
+    <div class="container px-4 px-lg-5"><div class="section-divider"></div></div>
+
+    <!-- ============================================================
+         EXECUTIVE MANAGEMENT
+         HOW TO EDIT: Same as above — replace names, titles, and bios.
+         The MD/CEO card comes first. Add or remove cards as needed.
+         ============================================================ -->
+    <section class="info-section section-services" style="padding-top:0;">
+        <div class="container px-4 px-lg-5">
+            <div class="row justify-content-center text-center mb-5">
+                <div class="col-12 col-lg-8">
+                    <p class="section-kicker mb-3">EXECUTIVE MANAGEMENT</p>
+                    <h2 class="section-title section-title-centered mb-4">Management Team</h2>
+                    <p class="section-text section-text-centered mb-0">
+                        The management team drives day-to-day operations, strategy implementation, and stakeholder engagement across all of PLACOM's operational departments.
+                    </p>
+                </div>
+            </div>
+
+            <div class="leadership-grid">
+
+                <!-- MD/CEO — Replace with real details -->
+                <article class="leader-card">
+                    <div class="leader-photo-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M4 20c0-4 3.582-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        <span>Photo</span>
+                    </div>
+                    <div class="leader-body">
+                        <span class="leader-badge leader-badge--management">Management</span>
+                        <h3 class="leader-name">[ MD/CEO Name ]</h3>
+                        <p class="leader-title">Managing Director / Chief Executive Officer</p>
+                        <p class="leader-bio">[ Insert a 2–3 sentence profile of the MD/CEO here — professional background, relevant experience, and vision for PLACOM. ]</p>
+                    </div>
+                </article>
+
+                <!-- HOD Marketing & Procurement -->
+                <article class="leader-card">
+                    <div class="leader-photo-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M4 20c0-4 3.582-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        <span>Photo</span>
+                    </div>
+                    <div class="leader-body">
+                        <span class="leader-badge leader-badge--management">Management</span>
+                        <h3 class="leader-name">[ Name ]</h3>
+                        <p class="leader-title">Head, Marketing &amp; Procurement</p>
+                        <p class="leader-bio">[ Insert profile here. ]</p>
+                    </div>
+                </article>
+
+                <!-- HOD Warehousing & Quality Control -->
+                <article class="leader-card">
+                    <div class="leader-photo-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M4 20c0-4 3.582-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        <span>Photo</span>
+                    </div>
+                    <div class="leader-body">
+                        <span class="leader-badge leader-badge--management">Management</span>
+                        <h3 class="leader-name">[ Name ]</h3>
+                        <p class="leader-title">Head, Warehousing &amp; Quality Control</p>
+                        <p class="leader-bio">[ Insert profile here. ]</p>
+                    </div>
+                </article>
+
+                <!-- HOD Finance & Accounts -->
+                <article class="leader-card">
+                    <div class="leader-photo-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M4 20c0-4 3.582-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        <span>Photo</span>
+                    </div>
+                    <div class="leader-body">
+                        <span class="leader-badge leader-badge--management">Management</span>
+                        <h3 class="leader-name">[ Name ]</h3>
+                        <p class="leader-title">Head, Finance &amp; Accounts</p>
+                        <p class="leader-bio">[ Insert profile here. ]</p>
+                    </div>
+                </article>
+
+                <!-- HOD Corporate Communications -->
+                <article class="leader-card">
+                    <div class="leader-photo-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M4 20c0-4 3.582-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        <span>Photo</span>
+                    </div>
+                    <div class="leader-body">
+                        <span class="leader-badge leader-badge--management">Management</span>
+                        <h3 class="leader-name">[ Name ]</h3>
+                        <p class="leader-title">Head, Corporate Communications</p>
+                        <p class="leader-bio">[ Insert profile here. ]</p>
+                    </div>
+                </article>
+
+                <!-- HOD ICT & Digital Operations -->
+                <article class="leader-card">
+                    <div class="leader-photo-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M4 20c0-4 3.582-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        <span>Photo</span>
+                    </div>
+                    <div class="leader-body">
+                        <span class="leader-badge leader-badge--management">Management</span>
+                        <h3 class="leader-name">[ Name ]</h3>
+                        <p class="leader-title">Head, ICT &amp; Digital Operations</p>
+                        <p class="leader-bio">[ Insert profile here. ]</p>
+                    </div>
+                </article>
+
+                <!-- HOD Research & Business Development -->
+                <article class="leader-card">
+                    <div class="leader-photo-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M4 20c0-4 3.582-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        <span>Photo</span>
+                    </div>
+                    <div class="leader-body">
+                        <span class="leader-badge leader-badge--management">Management</span>
+                        <h3 class="leader-name">[ Name ]</h3>
+                        <p class="leader-title">Head, Research &amp; Business Development</p>
+                        <p class="leader-bio">[ Insert profile here. ]</p>
+                    </div>
+                </article>
+
+                <!-- HOD Legal Services -->
+                <article class="leader-card">
+                    <div class="leader-photo-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M4 20c0-4 3.582-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        <span>Photo</span>
+                    </div>
+                    <div class="leader-body">
+                        <span class="leader-badge leader-badge--management">Management</span>
+                        <h3 class="leader-name">[ Name ]</h3>
+                        <p class="leader-title">Head, Legal Services</p>
+                        <p class="leader-bio">[ Insert profile here. ]</p>
+                    </div>
+                </article>
+
+                <!-- HOD Human Resources & Administration -->
+                <article class="leader-card">
+                    <div class="leader-photo-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M4 20c0-4 3.582-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        <span>Photo</span>
+                    </div>
+                    <div class="leader-body">
+                        <span class="leader-badge leader-badge--management">Management</span>
+                        <h3 class="leader-name">[ Name ]</h3>
+                        <p class="leader-title">Head, Human Resources &amp; Administration</p>
+                        <p class="leader-bio">[ Insert profile here. ]</p>
+                    </div>
+                </article>
+
+                <!--
+                    TO ADD MORE MANAGEMENT MEMBERS, copy a card block above and paste it here.
+                -->
+
+            </div>
+        </div>
+    </section>
+
+    <section class="join-section">
+        <div class="join-overlay"></div>
+        <div class="container px-4 px-lg-5 join-content text-center">
+            <h2 class="join-title mb-4">Work With Our Team</h2>
+            <p class="join-text mb-4">
+                Interested in partnering with PLACOM or exploring career opportunities? Our team is ready to engage.
+            </p>
+            <div class="d-flex flex-wrap gap-3 justify-content-center">
+                <a href="contact.html" class="btn btn-gold join-btn px-4 py-3">Get In Touch <span class="ms-1">→</span></a>
+                <a href="careers.html" class="btn btn-outline-light-custom px-4 py-3">View Careers</a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="site-footer">
+    <div class="container px-4 px-lg-5 footer-inner">
+        <div class="footer-top">
+            <div class="footer-brand-col">
+                <a class="footer-brand" href="index.html">
+                    <img src="assets/img/logo-footer.svg" alt="PLACOM Logo" class="footer-logo-img">
+                </a>
+                <p class="footer-intro mb-0">
+                    Integrated commodity marketing, supply chain management, and agro–solid minerals industrial facilitation for Plateau State and beyond.
+                </p>
+            </div>
+            <div class="footer-links-col">
+                <p class="footer-heading mb-3">COMPANY</p>
+                <ul class="footer-links list-unstyled mb-0">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="leadership.html">Leadership</a></li>
+                    <li><a href="what-we-do.html">Services</a></li>
+                    <li><a href="ecosystem.html">Ecosystem</a></li>
+                    <li><a href="commodities.html">Commodities</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-col">
+                <p class="footer-heading mb-3">ENGAGE</p>
+                <ul class="footer-links list-unstyled mb-0">
+                    <li><a href="tourism.html">Tourism</a></li>
+                    <li><a href="invest.html">Invest</a></li>
+                    <li><a href="export.html">Export &amp; Trade</a></li>
+                    <li><a href="warehouse.html">Warehouses</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="insights.html">Insights</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-col">
+                <p class="footer-heading mb-3">LOCATION</p>
+                <p class="footer-location mb-0">JD Gomwalk Secretariat<br>Jos, Plateau State<br>Nigeria</p>
+            </div>
+        </div>
+        <div class="footer-social-row">
+            <p class="footer-heading mb-0" style="font-size:0.7rem;letter-spacing:0.1em;">FOLLOW US</p>
+            <a href="https://facebook.com/placomlimited" target="_blank" rel="noopener" class="footer-social-link" aria-label="Facebook">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://x.com/placomlimited" target="_blank" rel="noopener" class="footer-social-link" aria-label="X (Twitter)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://instagram.com/placomlimited" target="_blank" rel="noopener" class="footer-social-link" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://youtube.com/@placomlimited" target="_blank" rel="noopener" class="footer-social-link" aria-label="YouTube">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#1a2e1a"/></svg>
+            </a>
+        </div>
+        <div class="footer-rule" aria-hidden="true"></div>
+        <div class="footer-bottom">
+            <p class="footer-legal mb-0">© 2026 PLACOM. All rights reserved.</p>
+            <p class="footer-initiative mb-0">A Plateau State Government Initiative</p>
+        </div>
+    </div>
+</footer>
+<script src="js/site.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+</body></html>

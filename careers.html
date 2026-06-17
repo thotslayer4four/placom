@@ -1,0 +1,420 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers - PLACOM</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="stylesheet" href="css/style.css?v=8">
+    <style>
+        .career-card {
+            background: #fff;
+            border: 1px solid #d6e0d3;
+            border-radius: 12px;
+            padding: 1.6rem 1.8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            transition: box-shadow 0.25s, transform 0.25s;
+        }
+        .career-card:hover {
+            box-shadow: 0 10px 32px rgba(15,60,30,0.11);
+            transform: translateY(-3px);
+        }
+        .career-card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .career-card-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #112c2a;
+            margin: 0;
+            line-height: 1.3;
+        }
+        .career-badge {
+            display: inline-block;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            padding: 4px 12px;
+            border-radius: 20px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .career-badge--open { background: #e8f5ec; color: #0a6344; }
+        .career-badge--soon { background: #fff8e6; color: #9a6f10; }
+        .career-badge--placeholder { background: #f0f0ee; color: #888; }
+        .career-dept {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: #0a6344;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin: 0;
+        }
+        .career-desc {
+            font-size: 0.9rem;
+            color: #4b6364;
+            line-height: 1.65;
+            margin: 0;
+        }
+        .career-meta {
+            display: flex;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+        }
+        .career-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.8rem;
+            color: #7a8f8a;
+        }
+        .career-meta-item svg { width: 14px; height: 14px; flex-shrink: 0; }
+        .career-apply-btn {
+            align-self: flex-start;
+            margin-top: 0.25rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #0a6344;
+            border: 1.5px solid #0a6344;
+            background: transparent;
+            border-radius: 8px;
+            padding: 0.5rem 1.2rem;
+            text-decoration: none;
+            transition: background 0.18s, color 0.18s;
+        }
+        .career-apply-btn:hover { background: #0a6344; color: #fff; }
+        .careers-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+        /* Values grid */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 1.25rem;
+        }
+        .value-card {
+            background: #fff;
+            border: 1px solid #d6e0d3;
+            border-radius: 12px;
+            padding: 1.4rem;
+            text-align: center;
+        }
+        .value-icon { font-size: 2rem; margin-bottom: 0.75rem; display: block; }
+        .value-title { font-size: 0.95rem; font-weight: 700; color: #112c2a; margin: 0 0 0.4rem; }
+        .value-text { font-size: 0.85rem; color: #4b6364; line-height: 1.6; margin: 0; }
+    </style>
+</head>
+<body>
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <span class="brand-icon" aria-hidden="true">
+                    <img src="assets/img/logo.svg" alt="PLACOM Logo" class="logo-img">
+                </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Company</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="about.html">About</a></li>
+                        <li><a class="dropdown-item" href="what-we-do.html">What We Do</a></li>
+                        <li><a class="dropdown-item" href="leadership.html">Leadership</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Engage</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="invest.html">Invest</a></li>
+                        <li><a class="dropdown-item" href="export.html">Export</a></li>
+                        <li><a class="dropdown-item" href="tourism.html">Tourism</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="commodities.html">Commodities</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                <li class="nav-item ms-lg-2"><a class="btn btn-nav-cta" href="invest.html">Partner With Us</a></li>
+            </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="hero-section hero-about">
+        <div class="hero-overlay"></div>
+        <div class="container px-4 px-lg-5 hero-content">
+            <p class="hero-eyebrow mb-3">CAREERS</p>
+            <h1 class="hero-title mb-4">Build the Future of Commodity Trade</h1>
+            <p class="hero-description mb-5">
+                Join a growing institution at the heart of Plateau State's economic transformation. PLACOM is building a team of professionals committed to creating sustainable commodity markets, empowering farmers, and driving inclusive growth.
+            </p>
+        </div>
+    </section>
+</header>
+
+<main>
+
+    <!-- Why Work at PLACOM -->
+    <section class="info-section section-services">
+        <div class="container px-4 px-lg-5">
+            <div class="row justify-content-center text-center mb-5">
+                <div class="col-12 col-lg-8">
+                    <p class="section-kicker mb-3">WHY PLACOM</p>
+                    <h2 class="section-title section-title-centered mb-4">Work That Matters</h2>
+                    <p class="section-text section-text-centered mb-0">
+                        PLACOM offers a rare opportunity to build something significant — a commodity ecosystem that directly improves livelihoods across Plateau State and beyond.
+                    </p>
+                </div>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <span class="value-icon">🌱</span>
+                    <p class="value-title">Meaningful Impact</p>
+                    <p class="value-text">Your work directly supports farmers, cooperatives, traders and communities across Plateau State.</p>
+                </div>
+                <div class="value-card">
+                    <span class="value-icon">📈</span>
+                    <p class="value-title">Growth Opportunities</p>
+                    <p class="value-text">A young, growing institution means real responsibility and clear paths for professional development.</p>
+                </div>
+                <div class="value-card">
+                    <span class="value-icon">🤝</span>
+                    <p class="value-title">Strategic Environment</p>
+                    <p class="value-text">Work alongside government partners, commodity exchanges, and development organisations at a national level.</p>
+                </div>
+                <div class="value-card">
+                    <span class="value-icon">💡</span>
+                    <p class="value-title">Innovation-Driven</p>
+                    <p class="value-text">Contribute to building digital commodity platforms and modern market systems for the next generation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Current Openings -->
+    <!-- ============================================================
+         HOW TO EDIT CAREER LISTINGS:
+         - Change career-badge--placeholder to career-badge--open (green) when a role is live
+         - Change career-badge--placeholder to career-badge--soon (amber) for upcoming roles
+         - Update the title, department, description, and location/type as needed
+         - For the Apply button: change href="#apply-form" to a real application link or email
+           e.g. href="mailto:careers@placom.ng?subject=Application: Role Name"
+         - To ADD a new role: copy one <article class="career-card"> block and paste it in
+         - To REMOVE a role: delete the entire <article class="career-card">...</article> block
+         ============================================================ -->
+    <section class="info-section section-mission">
+        <div class="container px-4 px-lg-5">
+            <div class="row justify-content-center text-center mb-5">
+                <div class="col-12 col-lg-8">
+                    <p class="section-kicker mb-3">OPEN POSITIONS</p>
+                    <h2 class="section-title section-title-centered mb-4">Current Opportunities</h2>
+                    <p class="section-text section-text-centered mb-0">
+                        We are building our team across all departments. Roles will be posted here as they become available. Check back regularly or send a speculative application to <a href="mailto:careers@placom.ng" style="color:#0a6344;font-weight:600;">careers@placom.ng</a>.
+                    </p>
+                </div>
+            </div>
+            <div class="careers-grid">
+
+                <!-- ROLE 1 — Update when live -->
+                <article class="career-card">
+                    <div class="career-card-header">
+                        <h3 class="career-card-title">Commodity Marketing Officer</h3>
+                        <span class="career-badge career-badge--placeholder">Coming Soon</span>
+                    </div>
+                    <p class="career-dept">Marketing &amp; Procurement</p>
+                    <p class="career-desc">Responsible for promoting and facilitating the sale of Plateau State commodities to domestic and international buyers — including managing buyer relationships, coordinating trade transactions, and supporting market development activities.</p>
+                    <div class="career-meta">
+                        <span class="career-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Jos, Plateau State</span>
+                        <span class="career-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg> Full-time</span>
+                    </div>
+                    <a href="mailto:careers@placom.ng?subject=Expression of Interest: Commodity Marketing Officer" class="career-apply-btn">Express Interest →</a>
+                </article>
+
+                <!-- ROLE 2 — Update when live -->
+                <article class="career-card">
+                    <div class="career-card-header">
+                        <h3 class="career-card-title">Warehouse Operations Officer</h3>
+                        <span class="career-badge career-badge--placeholder">Coming Soon</span>
+                    </div>
+                    <p class="career-dept">Warehousing &amp; Quality Control</p>
+                    <p class="career-desc">Oversee day-to-day warehouse operations including commodity receipt, grading, storage, inventory management, and quality inspection across PLACOM-affiliated warehouse facilities in Plateau State.</p>
+                    <div class="career-meta">
+                        <span class="career-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Jos, Plateau State</span>
+                        <span class="career-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg> Full-time</span>
+                    </div>
+                    <a href="mailto:careers@placom.ng?subject=Expression of Interest: Warehouse Operations Officer" class="career-apply-btn">Express Interest →</a>
+                </article>
+
+                <!-- ROLE 3 — Update when live -->
+                <article class="career-card">
+                    <div class="career-card-header">
+                        <h3 class="career-card-title">Finance &amp; Accounts Officer</h3>
+                        <span class="career-badge career-badge--placeholder">Coming Soon</span>
+                    </div>
+                    <p class="career-dept">Finance &amp; Accounts</p>
+                    <p class="career-desc">Support financial planning, accounting operations, budget tracking, and financial reporting across PLACOM's operational activities. Experience in commodity finance or agricultural trade finance is an advantage.</p>
+                    <div class="career-meta">
+                        <span class="career-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Jos, Plateau State</span>
+                        <span class="career-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg> Full-time</span>
+                    </div>
+                    <a href="mailto:careers@placom.ng?subject=Expression of Interest: Finance Officer" class="career-apply-btn">Express Interest →</a>
+                </article>
+
+                <!-- ROLE 4 — Update when live -->
+                <article class="career-card">
+                    <div class="career-card-header">
+                        <h3 class="career-card-title">ICT &amp; Digital Operations Officer</h3>
+                        <span class="career-badge career-badge--placeholder">Coming Soon</span>
+                    </div>
+                    <p class="career-dept">ICT &amp; Digital Operations</p>
+                    <p class="career-desc">Support the development and management of PLACOM's digital infrastructure — including market information platforms, warehouse management systems, and commodity trading tools — in collaboration with PICTDA.</p>
+                    <div class="career-meta">
+                        <span class="career-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Jos, Plateau State</span>
+                        <span class="career-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg> Full-time</span>
+                    </div>
+                    <a href="mailto:careers@placom.ng?subject=Expression of Interest: ICT Officer" class="career-apply-btn">Express Interest →</a>
+                </article>
+
+                <!-- ROLE 5 — Update when live -->
+                <article class="career-card">
+                    <div class="career-card-header">
+                        <h3 class="career-card-title">Research &amp; Business Development Analyst</h3>
+                        <span class="career-badge career-badge--placeholder">Coming Soon</span>
+                    </div>
+                    <p class="career-dept">Research &amp; Business Development</p>
+                    <p class="career-desc">Conduct commodity market research, identify investment and partnership opportunities, develop business cases, and support stakeholder engagement and institutional growth strategies.</p>
+                    <div class="career-meta">
+                        <span class="career-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Jos, Plateau State</span>
+                        <span class="career-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg> Full-time</span>
+                    </div>
+                    <a href="mailto:careers@placom.ng?subject=Expression of Interest: Research Analyst" class="career-apply-btn">Express Interest →</a>
+                </article>
+
+                <!-- ROLE 6 — Update when live -->
+                <article class="career-card">
+                    <div class="career-card-header">
+                        <h3 class="career-card-title">Corporate Communications Officer</h3>
+                        <span class="career-badge career-badge--placeholder">Coming Soon</span>
+                    </div>
+                    <p class="career-dept">Corporate Communications</p>
+                    <p class="career-desc">Manage PLACOM's public communications, media relations, social media channels, stakeholder engagement, and brand visibility across institutional and public platforms.</p>
+                    <div class="career-meta">
+                        <span class="career-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Jos, Plateau State</span>
+                        <span class="career-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg> Full-time</span>
+                    </div>
+                    <a href="mailto:careers@placom.ng?subject=Expression of Interest: Communications Officer" class="career-apply-btn">Express Interest →</a>
+                </article>
+
+                <!-- ROLE 7 — Internships -->
+                <article class="career-card">
+                    <div class="career-card-header">
+                        <h3 class="career-card-title">Graduate Internship Programme</h3>
+                        <span class="career-badge career-badge--placeholder">Coming Soon</span>
+                    </div>
+                    <p class="career-dept">All Departments</p>
+                    <p class="career-desc">PLACOM welcomes applications from recent graduates across agriculture, economics, finance, ICT, law, business administration, and related fields. Internships provide hands-on exposure to commodity marketing, supply chain operations, and institutional development.</p>
+                    <div class="career-meta">
+                        <span class="career-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Jos, Plateau State</span>
+                        <span class="career-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg> Internship</span>
+                    </div>
+                    <a href="mailto:careers@placom.ng?subject=Internship Application" class="career-apply-btn">Apply →</a>
+                </article>
+
+                <!-- ROLE 8 — Vendor/Consultant -->
+                <article class="career-card">
+                    <div class="career-card-header">
+                        <h3 class="career-card-title">Vendor &amp; Consultant Registration</h3>
+                        <span class="career-badge career-badge--placeholder">Open</span>
+                    </div>
+                    <p class="career-dept">Procurement</p>
+                    <p class="career-desc">PLACOM invites qualified vendors, consultants, and service providers across logistics, warehousing, ICT, agronomy, legal, and financial services to register their interest in supplying services to the company.</p>
+                    <div class="career-meta">
+                        <span class="career-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Nationwide</span>
+                        <span class="career-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg> Contract / Consultancy</span>
+                    </div>
+                    <a href="mailto:procurement@placom.ng?subject=Vendor Registration" class="career-apply-btn">Register Interest →</a>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="join-section">
+        <div class="join-overlay"></div>
+        <div class="container px-4 px-lg-5 join-content text-center">
+            <h2 class="join-title mb-4">Don't See Your Role?</h2>
+            <p class="join-text mb-4">
+                Send a speculative application to <strong>careers@placom.ng</strong> — tell us who you are, what you can contribute, and why you want to be part of PLACOM's mission.
+            </p>
+            <a href="mailto:careers@placom.ng?subject=Speculative Application" class="btn btn-gold join-btn px-4 py-3">Send Application <span class="ms-1">→</span></a>
+        </div>
+    </section>
+
+</main>
+<footer class="site-footer">
+    <div class="container px-4 px-lg-5 footer-inner">
+        <div class="footer-top">
+            <div class="footer-brand-col">
+                <a class="footer-brand" href="index.html"><img src="assets/img/logo-footer.svg" alt="PLACOM Logo" class="footer-logo-img"></a>
+                <p class="footer-intro mb-0">Integrated commodity marketing, supply chain management, and agro–solid minerals industrial facilitation for Plateau State and beyond.</p>
+            </div>
+            <div class="footer-links-col">
+                <p class="footer-heading mb-3">COMPANY</p>
+                <ul class="footer-links list-unstyled mb-0">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="leadership.html">Leadership</a></li>
+                    <li><a href="what-we-do.html">Services</a></li>
+                    <li><a href="ecosystem.html">Ecosystem</a></li>
+                    <li><a href="commodities.html">Commodities</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-col">
+                <p class="footer-heading mb-3">ENGAGE</p>
+                <ul class="footer-links list-unstyled mb-0">
+                    <li><a href="tourism.html">Tourism</a></li>
+                    <li><a href="invest.html">Invest</a></li>
+                    <li><a href="export.html">Export &amp; Trade</a></li>
+                    <li><a href="warehouse.html">Warehouses</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="insights.html">Insights</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-col">
+                <p class="footer-heading mb-3">LOCATION</p>
+                <p class="footer-location mb-0">JD Gomwalk Secretariat<br>Jos, Plateau State<br>Nigeria</p>
+            </div>
+        </div>
+        <div class="footer-social-row">
+            <p class="footer-heading mb-0" style="font-size:0.7rem;letter-spacing:0.1em;">FOLLOW US</p>
+            <a href="https://facebook.com/placomlimited" target="_blank" rel="noopener" class="footer-social-link" aria-label="Facebook">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://x.com/placomlimited" target="_blank" rel="noopener" class="footer-social-link" aria-label="X (Twitter)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://instagram.com/placomlimited" target="_blank" rel="noopener" class="footer-social-link" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://youtube.com/@placomlimited" target="_blank" rel="noopener" class="footer-social-link" aria-label="YouTube">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#1a2e1a"/></svg>
+            </a>
+        </div>
+        <div class="footer-rule" aria-hidden="true"></div>
+        <div class="footer-bottom">
+            <p class="footer-legal mb-0">© 2026 PLACOM. All rights reserved.</p>
+            <p class="footer-initiative mb-0">A Plateau State Government Initiative</p>
+        </div>
+    </div>
+</footer>
+<script src="js/site.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+</body></html>

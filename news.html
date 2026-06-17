@@ -1,0 +1,242 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="stylesheet" href="css/style.css?v=8">
+    <title>News &amp; Press - PLACOM</title>    <style>
+        .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+        .news-card { background: #fff; border: 1px solid #d6e0d3; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: box-shadow .25s, transform .25s; }
+        .news-card:hover { box-shadow: 0 10px 30px rgba(15,60,30,.12); transform: translateY(-3px); }
+        .news-card-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; background: #e8f0e5; }
+        .news-card-img-placeholder { width: 100%; aspect-ratio: 16/9; background: linear-gradient(135deg,#1c3023 0%,#2d5040 100%); display: flex; align-items: center; justify-content: center; }
+        .news-card-img-placeholder svg { width: 40px; height: 40px; color: rgba(255,255,255,.25); }
+        .news-card-body { padding: 1.25rem 1.4rem 1.5rem; display: flex; flex-direction: column; flex: 1; }
+        .news-card-tag { font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #0a6344; margin: 0 0 .4rem; }
+        .news-card-title { font-size: 1rem; font-weight: 700; color: #112c2a; margin: 0 0 .6rem; line-height: 1.35; }
+        .news-card-date { font-size: .78rem; color: #7a8f8a; margin: 0 0 .75rem; }
+        .news-card-excerpt { font-size: .88rem; color: #4b6364; line-height: 1.65; margin: 0; flex: 1; }
+        .news-placeholder-note { background: #f7f9f7; border: 1.5px dashed #b8d0bc; border-radius: 10px; padding: 1.25rem 1.5rem; font-size: .88rem; color: #5a7a5a; line-height: 1.65; }
+    </style>
+</head>
+<body>
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <span class="brand-icon" aria-hidden="true">
+                    <img src="assets/img/logo.svg" alt="PLACOM Logo" class="logo-img">
+                </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Company</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="about.html">About</a></li>
+                        <li><a class="dropdown-item" href="what-we-do.html">What We Do</a></li>
+                        <li><a class="dropdown-item" href="leadership.html">Leadership</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Engage</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="invest.html">Invest</a></li>
+                        <li><a class="dropdown-item" href="export.html">Export</a></li>
+                        <li><a class="dropdown-item" href="tourism.html">Tourism</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="commodities.html">Commodities</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                <li class="nav-item ms-lg-2"><a class="btn btn-nav-cta" href="invest.html">Partner With Us</a></li>
+            </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="hero-section hero-about">
+        <div class="hero-overlay"></div>
+        <div class="container px-4 px-lg-5 hero-content">
+            <p class="hero-eyebrow mb-3">NEWS &amp; PRESS</p>
+            <h1 class="hero-title mb-4">Latest News &amp; Announcements</h1>
+            <p class="hero-description mb-5">Stay up to date with PLACOM’s latest developments, partnerships, market updates, stakeholder engagements, and official announcements.</p>
+        </div>
+    </section>
+</header>
+<main>
+    <!-- ============================================================
+         HOW TO ADD A NEWS ARTICLE:
+         1. Copy one <article class="news-card"> block below
+         2. Replace the placeholder image div with:
+            <img src="images/news/your-image.jpg" alt="Description" class="news-card-img">
+         3. Update the tag, title, date, and excerpt
+         4. Change "Coming Soon" badge to the real publish date
+         5. Optionally link the card to a full article page or PDF
+
+         TO REMOVE an article: delete the entire <article>...</article> block
+    ============================================================ -->
+
+    <section class="info-section section-services">
+        <div class="container px-4 px-lg-5">
+
+            <div class="news-placeholder-note mb-5">
+                <strong>For editors:</strong> This page is ready for real press releases and news articles. Each card below is a placeholder template. Replace the title, date, tag, and excerpt with real content, and swap the dark placeholder with an actual image. Articles publish in the order they appear in the HTML — move the most recent card to the top.
+            </div>
+
+            <div class="news-grid">
+
+                <!-- NEWS ITEM 1 — Replace with real article -->
+                <article class="news-card">
+                    <div class="news-card-img-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                    </div>
+                    <div class="news-card-body">
+                        <p class="news-card-tag">Press Release</p>
+                        <h3 class="news-card-title">[ Headline of first press release ]</h3>
+                        <p class="news-card-date">[ Date — e.g. June 2026 ]</p>
+                        <p class="news-card-excerpt">[ A 2–3 sentence summary of the announcement. Describe what happened, who was involved, and why it matters for PLACOM's mission. ]</p>
+                    </div>
+                </article>
+
+                <!-- NEWS ITEM 2 -->
+                <article class="news-card">
+                    <div class="news-card-img-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                    </div>
+                    <div class="news-card-body">
+                        <p class="news-card-tag">Partnership</p>
+                        <h3 class="news-card-title">[ Strategic partnership announcement headline ]</h3>
+                        <p class="news-card-date">[ Date ]</p>
+                        <p class="news-card-excerpt">[ Summary of the partnership, who the partners are, and what the collaboration means for Plateau State's commodity ecosystem. ]</p>
+                    </div>
+                </article>
+
+                <!-- NEWS ITEM 3 -->
+                <article class="news-card">
+                    <div class="news-card-img-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                    </div>
+                    <div class="news-card-body">
+                        <p class="news-card-tag">Events</p>
+                        <h3 class="news-card-title">[ Stakeholder meeting or sensitisation programme headline ]</h3>
+                        <p class="news-card-date">[ Date ]</p>
+                        <p class="news-card-excerpt">[ Brief overview of the event, who attended, and key outcomes or decisions made. ]</p>
+                    </div>
+                </article>
+
+                <!-- NEWS ITEM 4 -->
+                <article class="news-card">
+                    <div class="news-card-img-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                    </div>
+                    <div class="news-card-body">
+                        <p class="news-card-tag">Commodity Markets</p>
+                        <h3 class="news-card-title">[ Market update or commodity price news headline ]</h3>
+                        <p class="news-card-date">[ Date ]</p>
+                        <p class="news-card-excerpt">[ A brief commodity market update covering key trends, price movements, or market developments relevant to Plateau State producers. ]</p>
+                    </div>
+                </article>
+
+                <!-- NEWS ITEM 5 -->
+                <article class="news-card">
+                    <div class="news-card-img-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                    </div>
+                    <div class="news-card-body">
+                        <p class="news-card-tag">Announcement</p>
+                        <h3 class="news-card-title">[ Official announcement headline ]</h3>
+                        <p class="news-card-date">[ Date ]</p>
+                        <p class="news-card-excerpt">[ Summary of the official announcement — e.g. a new programme, policy, or initiative. ]</p>
+                    </div>
+                </article>
+
+                <!-- NEWS ITEM 6 -->
+                <article class="news-card">
+                    <div class="news-card-img-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                    </div>
+                    <div class="news-card-body">
+                        <p class="news-card-tag">Development</p>
+                        <h3 class="news-card-title">[ Capacity building or training programme headline ]</h3>
+                        <p class="news-card-date">[ Date ]</p>
+                        <p class="news-card-excerpt">[ Brief report on a training, sensitisation, or capacity building programme conducted by PLACOM for farmers, cooperatives, or traders. ]</p>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="join-section">
+        <div class="join-overlay"></div>
+        <div class="container px-4 px-lg-5 join-content text-center">
+            <h2 class="join-title mb-4">Media Enquiries</h2>
+            <p class="join-text mb-4">For press releases, interviews, or media inquiries, contact our Corporate Communications team.</p>
+            <a href="mailto:info@placom.ng?subject=Media Enquiry" class="btn btn-gold join-btn px-4 py-3">Contact Communications <span class="ms-1">→</span></a>
+        </div>
+    </section>
+</main>
+<footer class="site-footer">
+    <div class="container px-4 px-lg-5 footer-inner">
+        <div class="footer-top">
+            <div class="footer-brand-col">
+                <a class="footer-brand" href="index.html"><img src="assets/img/logo-footer.svg" alt="PLACOM Logo" class="footer-logo-img"></a>
+                <p class="footer-intro mb-0">Integrated commodity marketing, supply chain management, and agro–solid minerals industrial facilitation for Plateau State and beyond.</p>
+            </div>
+            <div class="footer-links-col">
+                <p class="footer-heading mb-3">COMPANY</p>
+                <ul class="footer-links list-unstyled mb-0">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="leadership.html">Leadership</a></li>
+                    <li><a href="what-we-do.html">Services</a></li>
+                    <li><a href="ecosystem.html">Ecosystem</a></li>
+                    <li><a href="commodities.html">Commodities</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-col">
+                <p class="footer-heading mb-3">ENGAGE</p>
+                <ul class="footer-links list-unstyled mb-0">
+                    <li><a href="tourism.html">Tourism</a></li>
+                    <li><a href="invest.html">Invest</a></li>
+                    <li><a href="export.html">Export &amp; Trade</a></li>
+                    <li><a href="warehouse.html">Warehouses</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="insights.html">Insights</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-col">
+                <p class="footer-heading mb-3">LOCATION</p>
+                <p class="footer-location mb-0">JD Gomwalk Secretariat<br>Jos, Plateau State<br>Nigeria</p>
+            </div>
+        </div>
+        <div class="footer-social-row">
+            <p class="footer-heading mb-0" style="font-size:0.7rem;letter-spacing:0.1em;">FOLLOW US</p>
+            <a href="https://facebook.com/placomlimited" target="_blank" rel="noopener" class="footer-social-link" aria-label="Facebook">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://x.com/placomlimited" target="_blank" rel="noopener" class="footer-social-link" aria-label="X (Twitter)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://instagram.com/placomlimited" target="_blank" rel="noopener" class="footer-social-link" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://youtube.com/@placomlimited" target="_blank" rel="noopener" class="footer-social-link" aria-label="YouTube">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#1a2e1a"/></svg>
+            </a>
+        </div>
+        <div class="footer-rule" aria-hidden="true"></div>
+        <div class="footer-bottom">
+            <p class="footer-legal mb-0">© 2026 PLACOM. All rights reserved.</p>
+            <p class="footer-initiative mb-0">A Plateau State Government Initiative</p>
+        </div>
+    </div>
+</footer>
+<script src="js/site.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+</body></html>

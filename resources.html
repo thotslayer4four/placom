@@ -1,0 +1,375 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources - PLACOM</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="stylesheet" href="css/style.css?v=8">
+    <style>
+        .resource-category { margin-bottom: 3rem; }
+        .resource-category-title {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #0a6344;
+            margin: 0 0 1rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 2px solid #d6e0d3;
+        }
+        .resource-list { display: flex; flex-direction: column; gap: 0.75rem; }
+        .resource-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: #fff;
+            border: 1px solid #d6e0d3;
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            text-decoration: none;
+            color: inherit;
+            transition: box-shadow 0.2s, border-color 0.2s;
+        }
+        .resource-item:hover {
+            box-shadow: 0 6px 20px rgba(15,60,30,0.1);
+            border-color: #0a6344;
+            color: inherit;
+        }
+        .resource-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .resource-icon--pdf { background: #fdecea; color: #c0392b; }
+        .resource-icon--doc { background: #e8f0fb; color: #2665c8; }
+        .resource-icon--placeholder { background: #f0f0ee; color: #aaa; }
+        .resource-icon svg { width: 20px; height: 20px; }
+        .resource-info { flex: 1; min-width: 0; }
+        .resource-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #112c2a;
+            margin: 0 0 0.2rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .resource-meta {
+            font-size: 0.78rem;
+            color: #7a8f8a;
+            margin: 0;
+        }
+        .resource-badge {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: 20px;
+            flex-shrink: 0;
+        }
+        .resource-badge--available { background: #e8f5ec; color: #0a6344; }
+        .resource-badge--soon { background: #f0f0ee; color: #888; }
+        /* Resources grid */
+        .resources-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+    </style>
+</head>
+<body>
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <span class="brand-icon" aria-hidden="true">
+                    <img src="assets/img/logo.svg" alt="PLACOM Logo" class="logo-img">
+                </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Company</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="about.html">About</a></li>
+                        <li><a class="dropdown-item" href="what-we-do.html">What We Do</a></li>
+                        <li><a class="dropdown-item" href="leadership.html">Leadership</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Engage</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="invest.html">Invest</a></li>
+                        <li><a class="dropdown-item" href="export.html">Export</a></li>
+                        <li><a class="dropdown-item" href="tourism.html">Tourism</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="commodities.html">Commodities</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                <li class="nav-item ms-lg-2"><a class="btn btn-nav-cta" href="invest.html">Partner With Us</a></li>
+            </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="hero-section hero-about">
+        <div class="hero-overlay"></div>
+        <div class="container px-4 px-lg-5 hero-content">
+            <p class="hero-eyebrow mb-3">RESOURCES</p>
+            <h1 class="hero-title mb-4">Downloads &amp; Reference Materials</h1>
+            <p class="hero-description mb-5">
+                Access PLACOM's official documents, commodity reports, investment briefs, market bulletins, and operational guidelines — all in one place.
+            </p>
+        </div>
+    </section>
+</header>
+
+<main>
+    <!--
+        ============================================================
+        HOW TO ADD A DOCUMENT:
+        1. Upload the file to your server (put PDFs in a /docs/ folder, e.g. docs/investment-brief-2026.pdf)
+        2. Copy one <a class="resource-item"> block
+        3. Set href="docs/your-filename.pdf" (or the real URL)
+        4. Change the icon div class from resource-icon--placeholder to resource-icon--pdf (red) or resource-icon--doc (blue)
+        5. Update the resource-name and resource-meta (file type, size, date)
+        6. Change the badge from "Coming Soon" to "Download" and class to resource-badge--available
+
+        TO REMOVE a document: delete the entire <a class="resource-item">...</a> block.
+        ============================================================
+    -->
+    <section class="info-section section-services">
+        <div class="container px-4 px-lg-5">
+            <div class="resources-layout">
+
+                <!-- INVESTMENT & BUSINESS -->
+                <div class="resource-category">
+                    <p class="resource-category-title">Investment &amp; Business</p>
+                    <div class="resource-list">
+
+                        <a href="#" class="resource-item">
+                            <div class="resource-icon resource-icon--placeholder">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                            </div>
+                            <div class="resource-info">
+                                <p class="resource-name">PLACOM Investment Brief</p>
+                                <p class="resource-meta">PDF · Coming soon</p>
+                            </div>
+                            <span class="resource-badge resource-badge--soon">Coming Soon</span>
+                        </a>
+
+                        <a href="#" class="resource-item">
+                            <div class="resource-icon resource-icon--placeholder">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                            </div>
+                            <div class="resource-info">
+                                <p class="resource-name">PPP Opportunities Brochure</p>
+                                <p class="resource-meta">PDF · Coming soon</p>
+                            </div>
+                            <span class="resource-badge resource-badge--soon">Coming Soon</span>
+                        </a>
+
+                        <a href="#" class="resource-item">
+                            <div class="resource-icon resource-icon--placeholder">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                            </div>
+                            <div class="resource-info">
+                                <p class="resource-name">SAPZ Partnership Memorandum</p>
+                                <p class="resource-meta">PDF · Coming soon</p>
+                            </div>
+                            <span class="resource-badge resource-badge--soon">Coming Soon</span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <!-- COMMODITY REPORTS -->
+                <div class="resource-category">
+                    <p class="resource-category-title">Commodity Reports &amp; Market Data</p>
+                    <div class="resource-list">
+
+                        <a href="#" class="resource-item">
+                            <div class="resource-icon resource-icon--placeholder">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                            </div>
+                            <div class="resource-info">
+                                <p class="resource-name">Plateau Commodity Market Bulletin</p>
+                                <p class="resource-meta">PDF · Quarterly · Coming soon</p>
+                            </div>
+                            <span class="resource-badge resource-badge--soon">Coming Soon</span>
+                        </a>
+
+                        <a href="#" class="resource-item">
+                            <div class="resource-icon resource-icon--placeholder">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                            </div>
+                            <div class="resource-info">
+                                <p class="resource-name">Plateau State Agricultural Commodity Profile</p>
+                                <p class="resource-meta">PDF · Coming soon</p>
+                            </div>
+                            <span class="resource-badge resource-badge--soon">Coming Soon</span>
+                        </a>
+
+                        <a href="#" class="resource-item">
+                            <div class="resource-icon resource-icon--placeholder">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                            </div>
+                            <div class="resource-info">
+                                <p class="resource-name">Solid Minerals Resource Overview</p>
+                                <p class="resource-meta">PDF · Coming soon</p>
+                            </div>
+                            <span class="resource-badge resource-badge--soon">Coming Soon</span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <!-- WAREHOUSING & OPERATIONS -->
+                <div class="resource-category">
+                    <p class="resource-category-title">Warehousing &amp; Operations</p>
+                    <div class="resource-list">
+
+                        <a href="#" class="resource-item">
+                            <div class="resource-icon resource-icon--placeholder">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                            </div>
+                            <div class="resource-info">
+                                <p class="resource-name">Warehouse Receipt System Guidelines</p>
+                                <p class="resource-meta">PDF · Coming soon</p>
+                            </div>
+                            <span class="resource-badge resource-badge--soon">Coming Soon</span>
+                        </a>
+
+                        <a href="#" class="resource-item">
+                            <div class="resource-icon resource-icon--placeholder">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                            </div>
+                            <div class="resource-info">
+                                <p class="resource-name">Commodity Grading &amp; Quality Standards</p>
+                                <p class="resource-meta">PDF · Coming soon</p>
+                            </div>
+                            <span class="resource-badge resource-badge--soon">Coming Soon</span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <!-- COOPERATIVES & FARMER RESOURCES -->
+                <div class="resource-category">
+                    <p class="resource-category-title">Cooperatives &amp; Farmer Resources</p>
+                    <div class="resource-list">
+
+                        <a href="#" class="resource-item">
+                            <div class="resource-icon resource-icon--placeholder">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                            </div>
+                            <div class="resource-info">
+                                <p class="resource-name">Cooperative Registration Guidelines</p>
+                                <p class="resource-meta">PDF · Coming soon</p>
+                            </div>
+                            <span class="resource-badge resource-badge--soon">Coming Soon</span>
+                        </a>
+
+                        <a href="#" class="resource-item">
+                            <div class="resource-icon resource-icon--placeholder">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                            </div>
+                            <div class="resource-info">
+                                <p class="resource-name">Farmer Market Access Guide</p>
+                                <p class="resource-meta">PDF · Coming soon</p>
+                            </div>
+                            <span class="resource-badge resource-badge--soon">Coming Soon</span>
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="info-section section-mission">
+        <div class="container px-4 px-lg-5">
+            <div class="row justify-content-center text-center">
+                <div class="col-12 col-lg-7">
+                    <p class="section-kicker mb-3">REQUEST A DOCUMENT</p>
+                    <h2 class="section-title section-title-centered mb-4">Can't Find What You Need?</h2>
+                    <p class="section-text section-text-centered mb-4">
+                        For specific reports, data requests, or institutional documents, contact our Research &amp; Business Development team directly.
+                    </p>
+                    <a href="mailto:info@placom.ng?subject=Document Request" class="btn btn-gold px-4 py-3">Request a Document <span class="ms-1">→</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+<footer class="site-footer">
+    <div class="container px-4 px-lg-5 footer-inner">
+        <div class="footer-top">
+            <div class="footer-brand-col">
+                <a class="footer-brand" href="index.html"><img src="assets/img/logo-footer.svg" alt="PLACOM Logo" class="footer-logo-img"></a>
+                <p class="footer-intro mb-0">Integrated commodity marketing, supply chain management, and agro–solid minerals industrial facilitation for Plateau State and beyond.</p>
+            </div>
+            <div class="footer-links-col">
+                <p class="footer-heading mb-3">COMPANY</p>
+                <ul class="footer-links list-unstyled mb-0">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="leadership.html">Leadership</a></li>
+                    <li><a href="what-we-do.html">Services</a></li>
+                    <li><a href="ecosystem.html">Ecosystem</a></li>
+                    <li><a href="commodities.html">Commodities</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-col">
+                <p class="footer-heading mb-3">ENGAGE</p>
+                <ul class="footer-links list-unstyled mb-0">
+                    <li><a href="tourism.html">Tourism</a></li>
+                    <li><a href="invest.html">Invest</a></li>
+                    <li><a href="export.html">Export &amp; Trade</a></li>
+                    <li><a href="warehouse.html">Warehouses</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="insights.html">Insights</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-col">
+                <p class="footer-heading mb-3">LOCATION</p>
+                <p class="footer-location mb-0">JD Gomwalk Secretariat<br>Jos, Plateau State<br>Nigeria</p>
+            </div>
+        </div>
+        <div class="footer-social-row">
+            <p class="footer-heading mb-0" style="font-size:0.7rem;letter-spacing:0.1em;">FOLLOW US</p>
+            <a href="https://facebook.com/placomlimited" target="_blank" rel="noopener" class="footer-social-link" aria-label="Facebook">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://x.com/placomlimited" target="_blank" rel="noopener" class="footer-social-link" aria-label="X (Twitter)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://instagram.com/placomlimited" target="_blank" rel="noopener" class="footer-social-link" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://youtube.com/@placomlimited" target="_blank" rel="noopener" class="footer-social-link" aria-label="YouTube">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#1a2e1a"/></svg>
+            </a>
+        </div>
+        <div class="footer-rule" aria-hidden="true"></div>
+        <div class="footer-bottom">
+            <p class="footer-legal mb-0">© 2026 PLACOM. All rights reserved.</p>
+            <p class="footer-initiative mb-0">A Plateau State Government Initiative</p>
+        </div>
+    </div>
+</footer>
+<script src="js/site.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+</body></html>

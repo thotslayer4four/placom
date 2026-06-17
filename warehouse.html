@@ -1,0 +1,316 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warehouse Network - PLACOM</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="stylesheet" href="css/style.css?v=8">
+    <style>
+        .warehouse-card {
+            background: #fff;
+            border: 1px solid #d6e0d3;
+            border-radius: 12px;
+            padding: 1.6rem 1.8rem;
+            height: 100%;
+            transition: box-shadow .25s, transform .25s;
+        }
+        .warehouse-card:hover {
+            box-shadow: 0 10px 30px rgba(15,60,30,.11);
+            transform: translateY(-3px);
+        }
+        .warehouse-card-icon {
+            width: 48px; height: 48px;
+            background: #e8f5ec;
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 1rem;
+            color: #0a6344;
+        }
+        .warehouse-card-icon svg { width: 24px; height: 24px; }
+        .warehouse-card-title {
+            font-size: 1rem; font-weight: 700; color: #112c2a;
+            margin: 0 0 .5rem;
+        }
+        .warehouse-card-text {
+            font-size: .88rem; color: #4b6364;
+            line-height: 1.65; margin: 0;
+        }
+        .wrs-steps {
+            counter-reset: wrs-step;
+            display: flex; flex-direction: column; gap: 1.25rem;
+        }
+        .wrs-step {
+            display: flex; gap: 1.25rem; align-items: flex-start;
+        }
+        .wrs-step-num {
+            counter-increment: wrs-step;
+            width: 36px; height: 36px; border-radius: 50%;
+            background: #0a6344; color: #fff;
+            display: flex; align-items: center; justify-content: center;
+            font-size: .85rem; font-weight: 700; flex-shrink: 0;
+        }
+        .wrs-step-num::before { content: counter(wrs-step); }
+        .wrs-step-body h4 { font-size: .95rem; font-weight: 700; color: #112c2a; margin: 0 0 .25rem; }
+        .wrs-step-body p { font-size: .88rem; color: #4b6364; margin: 0; line-height: 1.6; }
+    </style>
+</head>
+<body>
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <span class="brand-icon" aria-hidden="true"><img src="assets/img/logo.svg" alt="PLACOM Logo" class="logo-img"></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Company</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="about.html">About</a></li>
+                        <li><a class="dropdown-item" href="what-we-do.html">What We Do</a></li>
+                        <li><a class="dropdown-item" href="leadership.html">Leadership</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Engage</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="invest.html">Invest</a></li>
+                        <li><a class="dropdown-item" href="export.html">Export</a></li>
+                        <li><a class="dropdown-item" href="tourism.html">Tourism</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="commodities.html">Commodities</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                <li class="nav-item ms-lg-2"><a class="btn btn-nav-cta" href="invest.html">Partner With Us</a></li>
+            </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="hero-section hero-about">
+        <div class="hero-overlay"></div>
+        <div class="container px-4 px-lg-5 hero-content">
+            <p class="hero-eyebrow mb-3">WAREHOUSE NETWORK</p>
+            <h1 class="hero-title mb-4">Modern Commodity Storage Infrastructure</h1>
+            <p class="hero-description mb-5">
+                PLACOM is building a statewide network of warehouses, aggregation centres, and cold storage facilities to reduce post-harvest losses, support commodity financing, and stabilise Plateau State’s agricultural markets.
+            </p>
+        </div>
+    </section>
+</header>
+
+<main>
+
+    <!-- Infrastructure Types -->
+    <section class="info-section section-services">
+        <div class="container px-4 px-lg-5">
+            <div class="row justify-content-center text-center mb-5">
+                <div class="col-12 col-lg-8">
+                    <p class="section-kicker mb-3">INFRASTRUCTURE</p>
+                    <h2 class="section-title section-title-centered mb-4">Types of Warehousing Facilities</h2>
+                    <p class="section-text section-text-centered mb-0">
+                        The PLACOM warehousing network is designed to serve different points across the commodity value chain — from farmgate collection to long-term storage and structured financing.
+                    </p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="warehouse-card">
+                        <div class="warehouse-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                        </div>
+                        <h3 class="warehouse-card-title">Aggregation Centres</h3>
+                        <p class="warehouse-card-text">Strategically located farmgate collection points where smallholder farmers consolidate produce before grading, weighing, and onward distribution. Reduces transportation costs and post-harvest losses at source.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="warehouse-card">
+                        <div class="warehouse-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                        </div>
+                        <h3 class="warehouse-card-title">Certified Public Warehouses</h3>
+                        <p class="warehouse-card-text">Government-backed, PLACOM-affiliated warehouses offering secure, insured storage for agricultural commodities. Certified warehouses enable the issuance of Warehouse Receipts used for commodity-backed financing.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="warehouse-card">
+                        <div class="warehouse-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>
+                        </div>
+                        <h3 class="warehouse-card-title">Cold Storage Facilities</h3>
+                        <p class="warehouse-card-text">Temperature-controlled storage designed for high-value perishables including strawberries, tomatoes, Irish potatoes, vegetables, and dairy products — extending shelf life and market window.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="warehouse-card">
+                        <div class="warehouse-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"/></svg>
+                        </div>
+                        <h3 class="warehouse-card-title">Quality Control Laboratories</h3>
+                        <p class="warehouse-card-text">On-site grading, testing, and certification facilities ensuring commodities meet national and international standards before entering trading, financing, or export channels.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="warehouse-card">
+                        <div class="warehouse-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+                        </div>
+                        <h3 class="warehouse-card-title">Warehouse Receipt Systems</h3>
+                        <p class="warehouse-card-text">A digital and paper-based receipting infrastructure that allows farmers to store commodities in certified warehouses and use the receipt as collateral to access credit — without selling at distress prices.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="warehouse-card">
+                        <div class="warehouse-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 17l-5-5-4 4-3-3"/></svg>
+                        </div>
+                        <h3 class="warehouse-card-title">Public Food Reserve System</h3>
+                        <p class="warehouse-card-text">Strategic commodity reserves managed in partnership with government agencies to support price stabilisation, food security, and emergency supply management across Plateau State.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How WRS Works -->
+    <section class="info-section section-mission">
+        <div class="container px-4 px-lg-5">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-9">
+                    <div class="row align-items-center g-5">
+                        <div class="col-12 col-lg-6">
+                            <p class="section-kicker mb-3">HOW IT WORKS</p>
+                            <h2 class="section-title mb-4">The Warehouse Receipt System</h2>
+                            <p class="section-text mb-4">
+                                The Warehouse Receipt System (WRS) is a key financial innovation that allows farmers and traders to unlock the value of stored commodities without selling them prematurely at low prices.
+                            </p>
+                            <div class="wrs-steps">
+                                <div class="wrs-step">
+                                    <div class="wrs-step-num"></div>
+                                    <div class="wrs-step-body">
+                                        <h4>Deposit commodity</h4>
+                                        <p>Farmer delivers graded, certified commodities to a PLACOM-accredited warehouse.</p>
+                                    </div>
+                                </div>
+                                <div class="wrs-step">
+                                    <div class="wrs-step-num"></div>
+                                    <div class="wrs-step-body">
+                                        <h4>Receive warehouse receipt</h4>
+                                        <p>A certified warehouse receipt is issued, confirming the quantity, quality, and ownership of stored goods.</p>
+                                    </div>
+                                </div>
+                                <div class="wrs-step">
+                                    <div class="wrs-step-num"></div>
+                                    <div class="wrs-step-body">
+                                        <h4>Access financing</h4>
+                                        <p>The receipt is presented to a financial institution as collateral to access a loan or working capital.</p>
+                                    </div>
+                                </div>
+                                <div class="wrs-step">
+                                    <div class="wrs-step-num"></div>
+                                    <div class="wrs-step-body">
+                                        <h4>Sell when prices are right</h4>
+                                        <p>The farmer sells at a time and price of their choosing, repays the loan, and collects remaining proceeds.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <div style="background:linear-gradient(135deg,#1c3023 0%,#152017 100%);border-radius:16px;padding:2rem 2.25rem;color:#fff;">
+                                <p class="section-kicker mb-3" style="color:var(--placom-gold);">BENEFITS</p>
+                                <h3 style="font-size:1.15rem;font-weight:700;margin:0 0 1.25rem;color:#fff;">Why WRS Matters</h3>
+                                <ul style="padding-left:1.25rem;margin:0;display:flex;flex-direction:column;gap:.75rem;">
+                                    <li style="font-size:.9rem;color:rgba(255,255,255,.85);line-height:1.55;">Eliminates distress selling at harvest-time lows</li>
+                                    <li style="font-size:.9rem;color:rgba(255,255,255,.85);line-height:1.55;">Provides access to affordable credit for farmers</li>
+                                    <li style="font-size:.9rem;color:rgba(255,255,255,.85);line-height:1.55;">Reduces post-harvest losses through proper storage</li>
+                                    <li style="font-size:.9rem;color:rgba(255,255,255,.85);line-height:1.55;">Supports commodity price stabilisation</li>
+                                    <li style="font-size:.9rem;color:rgba(255,255,255,.85);line-height:1.55;">Creates structured, transparent commodity markets</li>
+                                    <li style="font-size:.9rem;color:rgba(255,255,255,.85);line-height:1.55;">Enables financial institutions to lend with confidence</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="join-section">
+        <div class="join-overlay"></div>
+        <div class="container px-4 px-lg-5 join-content text-center">
+            <h2 class="join-title mb-4">Partner in Warehousing Development</h2>
+            <p class="join-text mb-4">
+                Interested in investing in warehouse infrastructure or becoming an accredited PLACOM warehouse operator? Get in touch with our team.
+            </p>
+            <div class="d-flex flex-wrap gap-3 justify-content-center">
+                <a href="contact.html" class="btn btn-gold join-btn px-4 py-3">Contact Us →</a>
+                <a href="invest.html" class="btn btn-outline-light-custom px-4 py-3">Investment Opportunities</a>
+            </div>
+        </div>
+    </section>
+
+</main>
+<footer class="site-footer">
+    <div class="container px-4 px-lg-5 footer-inner">
+        <div class="footer-top">
+            <div class="footer-brand-col">
+                <a class="footer-brand" href="index.html"><img src="assets/img/logo-footer.svg" alt="PLACOM Logo" class="footer-logo-img"></a>
+                <p class="footer-intro mb-0">Integrated commodity marketing, supply chain management, and agro–solid minerals industrial facilitation for Plateau State and beyond.</p>
+            </div>
+            <div class="footer-links-col">
+                <p class="footer-heading mb-3">COMPANY</p>
+                <ul class="footer-links list-unstyled mb-0">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="leadership.html">Leadership</a></li>
+                    <li><a href="what-we-do.html">Services</a></li>
+                    <li><a href="ecosystem.html">Ecosystem</a></li>
+                    <li><a href="commodities.html">Commodities</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-col">
+                <p class="footer-heading mb-3">ENGAGE</p>
+                <ul class="footer-links list-unstyled mb-0">
+                    <li><a href="tourism.html">Tourism</a></li>
+                    <li><a href="invest.html">Invest</a></li>
+                    <li><a href="export.html">Export &amp; Trade</a></li>
+                    <li><a href="warehouse.html">Warehouses</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="insights.html">Insights</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-col">
+                <p class="footer-heading mb-3">LOCATION</p>
+                <p class="footer-location mb-0">JD Gomwalk Secretariat<br>Jos, Plateau State<br>Nigeria</p>
+            </div>
+        </div>
+        <div class="footer-social-row">
+            <p class="footer-heading mb-0" style="font-size:0.7rem;letter-spacing:0.1em;">FOLLOW US</p>
+            <a href="https://facebook.com/placomlimited" target="_blank" rel="noopener" class="footer-social-link" aria-label="Facebook">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://x.com/placomlimited" target="_blank" rel="noopener" class="footer-social-link" aria-label="X (Twitter)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://instagram.com/placomlimited" target="_blank" rel="noopener" class="footer-social-link" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://youtube.com/@placomlimited" target="_blank" rel="noopener" class="footer-social-link" aria-label="YouTube">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#1a2e1a"/></svg>
+            </a>
+        </div>
+        <div class="footer-rule" aria-hidden="true"></div>
+        <div class="footer-bottom">
+            <p class="footer-legal mb-0">© 2026 PLACOM. All rights reserved.</p>
+            <p class="footer-initiative mb-0">A Plateau State Government Initiative</p>
+        </div>
+    </div>
+</footer>
+<script src="js/site.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+</body></html>
