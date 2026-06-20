@@ -1,0 +1,453 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer &amp; Cooperative Registration - PLACOM</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="stylesheet" href="css/style.css?v=10">
+    <style>
+        .reg-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: start;
+        }
+        @media (max-width: 991px) {
+            .reg-grid { grid-template-columns: 1fr; gap: 3rem; }
+        }
+        .reg-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #5a4e36;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+        .reg-input,
+        .reg-select,
+        .reg-textarea {
+            width: 100%;
+            padding: 0.7rem 0;
+            border: none;
+            border-bottom: 1px solid #d4cfc4;
+            background: transparent;
+            font-size: 0.95rem;
+            color: #1a1508;
+            outline: none;
+            font-family: inherit;
+            transition: border-color 0.2s;
+            border-radius: 0;
+            appearance: none;
+        }
+        .reg-input:focus,
+        .reg-select:focus,
+        .reg-textarea:focus { border-bottom-color: var(--placom-gold); }
+        .reg-textarea { resize: vertical; min-height: 100px; }
+        .reg-form-group { margin-bottom: 1.5rem; }
+        .reg-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        @media (max-width: 575.98px) { .reg-form-row { grid-template-columns: 1fr; } }
+        .reg-hint { font-size: 0.78rem; color: #8a8270; margin-top: 0.35rem; }
+
+        .reg-type-toggle { display: flex; gap: 0.75rem; margin-bottom: 1.75rem; }
+        .reg-type-option { flex: 1; }
+        .reg-type-option input { position: absolute; opacity: 0; pointer-events: none; }
+        .reg-type-option label {
+            display: block;
+            text-align: center;
+            padding: 0.85rem 1rem;
+            border: 1.5px solid #d4cfc4;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #5a4e36;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .reg-type-option input:checked + label {
+            border-color: var(--placom-gold);
+            background: rgba(224, 171, 30, 0.08);
+            color: #8a5d0a;
+        }
+
+        .reg-info-heading {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--placom-gold);
+            margin-bottom: 0.5rem;
+        }
+        .reg-info-text { font-size: 0.95rem; color: #5a4e36; line-height: 1.6; margin-bottom: 0; }
+        .reg-info-block { margin-bottom: 1.75rem; }
+        .reg-honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+        .reg-form-error {
+            display: none;
+            background: rgba(192, 57, 43, 0.08);
+            border: 1px solid rgba(192, 57, 43, 0.25);
+            color: #a8362a;
+            font-size: 0.85rem;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            margin-bottom: 1.5rem;
+        }
+        .reg-form-error.show { display: block; }
+        .reg-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none !important; }
+        #toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #1f7a43;
+            color: #fff;
+            padding: 1rem 1.5rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s;
+            z-index: 999;
+            pointer-events: none;
+            max-width: 320px;
+        }
+        #toast.show { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+
+<body>
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <span class="brand-icon" aria-hidden="true">
+                    <img src="assets/img/logo.svg" alt="PLACOM Logo" class="logo-img">
+                </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Company</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="about.html">About</a></li>
+                        <li><a class="dropdown-item" href="what-we-do.html">What We Do</a></li>
+                        <li><a class="dropdown-item" href="leadership.html">Leadership</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Engage</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="invest.html">Invest</a></li>
+                        <li><a class="dropdown-item" href="export.html">Export</a></li>
+                        <li><a class="dropdown-item" href="tourism.html">Tourism</a></li>
+                        <li><a class="dropdown-item active" href="register.html">Farmer Registration</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="commodities.html">Commodities</a></li>
+                <li class="nav-item"><a class="nav-link" href="market-prices.html">Market Prices</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                <li class="nav-item ms-lg-2"><a class="btn btn-nav-cta" href="invest.html">Partner With Us</a></li>
+            </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section hero-register">
+        <div class="hero-overlay"></div>
+        <div class="container px-4 px-lg-5 hero-content">
+            <p class="hero-eyebrow mb-3">FARMER &amp; COOPERATIVE REGISTRATION</p>
+            <h1 class="hero-title mb-4">Join PLACOM's Producer Network</h1>
+            <p class="hero-description mb-5">
+                Register as an individual farmer or cooperative to access market linkage, certification support, and price stabilization programs across Plateau State.
+            </p>
+        </div>
+    </section>
+</header>
+
+<main>
+    <section class="info-section section-services">
+        <div class="container px-4 px-lg-5">
+            <div class="reg-grid">
+                <div>
+                    <p class="section-kicker mb-3">REGISTER NOW</p>
+                    <h2 class="section-title mb-5">Tell us about your farm or cooperative.</h2>
+
+                    <div class="reg-form-error" id="reg-error"></div>
+
+                    <form id="registration-form" novalidate>
+                        <div class="reg-type-toggle">
+                            <div class="reg-type-option">
+                                <input type="radio" name="registrationType" id="type-individual" value="Individual Farmer" checked>
+                                <label for="type-individual">Individual Farmer</label>
+                            </div>
+                            <div class="reg-type-option">
+                                <input type="radio" name="registrationType" id="type-cooperative" value="Cooperative / Group">
+                                <label for="type-cooperative">Cooperative / Group</label>
+                            </div>
+                        </div>
+
+                        <div class="reg-form-group">
+                            <label class="reg-label" for="fullName">Full Name</label>
+                            <input class="reg-input" type="text" id="fullName" placeholder="Your full name" required maxlength="120">
+                        </div>
+
+                        <div class="reg-form-group" id="cooperativeNameGroup" style="display:none;">
+                            <label class="reg-label" for="cooperativeName">Cooperative / Group Name</label>
+                            <input class="reg-input" type="text" id="cooperativeName" placeholder="Name of your cooperative or group" maxlength="120">
+                        </div>
+
+                        <div class="reg-form-row">
+                            <div class="reg-form-group">
+                                <label class="reg-label" for="phone">Phone Number</label>
+                                <input class="reg-input" type="tel" id="phone" placeholder="080xxxxxxxx" required maxlength="40">
+                            </div>
+                            <div class="reg-form-group">
+                                <label class="reg-label" for="email">Email (optional)</label>
+                                <input class="reg-input" type="email" id="email" placeholder="your@email.com" maxlength="120">
+                            </div>
+                        </div>
+
+                        <div class="reg-form-group">
+                            <label class="reg-label" for="lga">Local Government Area</label>
+                            <select class="reg-select" id="lga" required>
+                                <option value="" disabled selected>Select your LGA</option>
+                                <option>Bokkos</option>
+                                <option>Barkin Ladi</option>
+                                <option>Bassa</option>
+                                <option>Jos East</option>
+                                <option>Jos North</option>
+                                <option>Jos South</option>
+                                <option>Kanam</option>
+                                <option>Kanke</option>
+                                <option>Langtang North</option>
+                                <option>Langtang South</option>
+                                <option>Mangu</option>
+                                <option>Mikang</option>
+                                <option>Pankshin</option>
+                                <option>Quaan Pan</option>
+                                <option>Riyom</option>
+                                <option>Shendam</option>
+                                <option>Wase</option>
+                            </select>
+                        </div>
+
+                        <div class="reg-form-group">
+                            <label class="reg-label" for="primaryCommodities">Primary Commodities</label>
+                            <input class="reg-input" type="text" id="primaryCommodities" placeholder="e.g. Irish Potatoes, Tomatoes, Maize" required maxlength="300">
+                            <p class="reg-hint">Separate multiple commodities with commas.</p>
+                        </div>
+
+                        <div class="reg-form-row">
+                            <div class="reg-form-group">
+                                <label class="reg-label" for="farmGroupSize">Farm / Group Size</label>
+                                <input class="reg-input" type="text" id="farmGroupSize" placeholder="e.g. 2 hectares or 45 members" maxlength="60">
+                            </div>
+                            <div class="reg-form-group">
+                                <label class="reg-label" for="yearsActive">Years Active</label>
+                                <input class="reg-input" type="number" id="yearsActive" placeholder="e.g. 5" min="0" max="100">
+                            </div>
+                        </div>
+
+                        <div class="reg-form-group">
+                            <label class="reg-label" for="notes">Additional Notes (optional)</label>
+                            <textarea class="reg-textarea" id="notes" rows="4" placeholder="Anything else PLACOM should know?" maxlength="2000"></textarea>
+                        </div>
+
+                        <div class="reg-honeypot" aria-hidden="true">
+                            <label for="website">Website</label>
+                            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                        </div>
+
+                        <button type="submit" class="btn btn-gold reg-submit-btn px-4 py-3" id="reg-submit">Submit Registration <span class="ms-1">→</span></button>
+                    </form>
+                </div>
+
+                <div>
+                    <p class="section-kicker mb-3">WHY REGISTER</p>
+                    <h2 class="section-title mb-5">Benefits of joining PLACOM's network.</h2>
+
+                    <div class="reg-info-block">
+                        <p class="reg-info-heading">Market Linkage</p>
+                        <p class="reg-info-text">Get connected to buyers, traders, exporters and processors actively sourcing Plateau State commodities.</p>
+                    </div>
+                    <div class="reg-info-block">
+                        <p class="reg-info-heading">Grading &amp; Certification</p>
+                        <p class="reg-info-text">Access support to meet national and international quality standards that unlock premium markets.</p>
+                    </div>
+                    <div class="reg-info-block">
+                        <p class="reg-info-heading">Price Stabilization</p>
+                        <p class="reg-info-text">Benefit from market intervention mechanisms designed to protect farmers and cooperatives from seasonal price volatility.</p>
+                    </div>
+                    <div class="reg-info-block">
+                        <p class="reg-info-heading">Aggregation &amp; Storage</p>
+                        <p class="reg-info-text">Certified warehouses help consolidate your output into commercially viable volumes for market and export.</p>
+                    </div>
+
+                    <div style="margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid #e8e3d8;">
+                        <p class="section-kicker mb-4">QUESTIONS FIRST?</p>
+                        <div class="reg-info-block">
+                            <p class="reg-info-heading">Farmer Cooperatives Desk</p>
+                            <p class="reg-info-text">For registration, cooperative development, and market access programs.</p>
+                        </div>
+                        <div class="reg-info-block">
+                            <p class="reg-info-heading">Email</p>
+                            <p class="reg-info-text"><a href="mailto:info@placom.ng" style="color:inherit;">info@placom.ng</a></p>
+                        </div>
+                        <div class="reg-info-block">
+                            <p class="reg-info-heading">Phone</p>
+                            <p class="reg-info-text">+234 (0) 800 PLACOM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="container px-4 px-lg-5 footer-inner">
+        <div class="footer-top">
+            <div class="footer-brand-col">
+                <a class="footer-brand" href="index.html">
+                    <img src="assets/img/logo-footer.svg" alt="PLACOM Logo" class="footer-logo-img">
+                </a>
+                <p class="footer-intro mb-0">
+                    Integrated commodity marketing, supply chain management, and agro–solid minerals industrial facilitation for Plateau State and beyond.
+                </p>
+            </div>
+            <div class="footer-links-col">
+                <p class="footer-heading mb-3">COMPANY</p>
+                <ul class="footer-links list-unstyled mb-0">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="leadership.html">Leadership</a></li>
+                    <li><a href="what-we-do.html">Services</a></li>
+                    <li><a href="ecosystem.html">Ecosystem</a></li>
+                    <li><a href="commodities.html">Commodities</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-col">
+                <p class="footer-heading mb-3">ENGAGE</p>
+                <ul class="footer-links list-unstyled mb-0">
+                    <li><a href="tourism.html">Tourism</a></li>
+                    <li><a href="invest.html">Invest</a></li>
+                    <li><a href="export.html">Export &amp; Trade</a></li>
+                    <li><a href="warehouse.html">Warehouses</a></li>
+                    <li><a href="market-prices.html">Market Prices</a></li>
+                    <li><a href="register.html">Farmer Registration</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="insights.html">Insights</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-col">
+                <p class="footer-heading mb-3">LOCATION</p>
+                <p class="footer-location mb-0">JD Gomwalk Secretariat<br>Jos, Plateau State<br>Nigeria</p>
+            </div>
+        </div>
+        <div class="footer-social-row">
+            <p class="footer-heading mb-0" style="font-size:0.7rem;letter-spacing:0.1em;">FOLLOW US</p>
+            <a href="https://facebook.com/placomlimited" target="_blank" rel="noopener" class="footer-social-link" aria-label="Facebook">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://x.com/placomlimited" target="_blank" rel="noopener" class="footer-social-link" aria-label="X (Twitter)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://instagram.com/placomlimited" target="_blank" rel="noopener" class="footer-social-link" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://youtube.com/@placomlimited" target="_blank" rel="noopener" class="footer-social-link" aria-label="YouTube">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#1a2e1a"/></svg>
+            </a>
+        </div>
+        <div class="footer-rule" aria-hidden="true"></div>
+        <div class="footer-bottom">
+            <p class="footer-legal mb-0">© 2026 PLACOM. All rights reserved.</p>
+            <p class="footer-initiative mb-0">A Plateau State Government Initiative</p>
+        </div>
+    </div>
+</footer>
+<div id="toast">Thank you for registering. PLACOM will review your details and reach out shortly.</div>
+<script src="js/site.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script>
+(function () {
+    const form = document.getElementById('registration-form');
+    const cooperativeGroup = document.getElementById('cooperativeNameGroup');
+    const errorBox = document.getElementById('reg-error');
+    const submitBtn = document.getElementById('reg-submit');
+    const toast = document.getElementById('toast');
+
+    function syncCooperativeField() {
+        const isCooperative = document.getElementById('type-cooperative').checked;
+        cooperativeGroup.style.display = isCooperative ? 'block' : 'none';
+        document.getElementById('cooperativeName').required = isCooperative;
+    }
+
+    document.getElementsByName('registrationType').forEach((radio) => {
+        radio.addEventListener('change', syncCooperativeField);
+    });
+    syncCooperativeField();
+
+    function showError(message) {
+        errorBox.textContent = message;
+        errorBox.classList.add('show');
+    }
+
+    function hideError() {
+        errorBox.classList.remove('show');
+    }
+
+    form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        hideError();
+
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
+
+        const payload = {
+            registrationType: document.querySelector('input[name="registrationType"]:checked').value,
+            fullName: document.getElementById('fullName').value.trim(),
+            cooperativeName: document.getElementById('cooperativeName').value.trim(),
+            phone: document.getElementById('phone').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            lga: document.getElementById('lga').value,
+            primaryCommodities: document.getElementById('primaryCommodities').value.trim(),
+            farmGroupSize: document.getElementById('farmGroupSize').value.trim(),
+            yearsActive: document.getElementById('yearsActive').value,
+            notes: document.getElementById('notes').value.trim(),
+            website: document.getElementById('website').value,
+        };
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Submitting...';
+
+        try {
+            const response = await fetch('/api/registrations', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
+            });
+            const body = await response.json();
+            if (!response.ok) throw new Error(body.error || 'Something went wrong. Please try again.');
+
+            form.reset();
+            syncCooperativeField();
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 5000);
+        } catch (err) {
+            showError(err.message || 'Something went wrong. Please try again.');
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = 'Submit Registration <span class="ms-1">→</span>';
+        }
+    });
+})();
+</script>
+</body></html>

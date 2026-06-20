@@ -1,0 +1,7 @@
+{
+    "name": "placom-website",
+    "private": true,
+    "engines": {
+        "node": ">=18"
+    }
+}

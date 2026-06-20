@@ -1,0 +1,503 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Market Prices - PLACOM</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="stylesheet" href="css/style.css?v=10">
+    <style>
+        .market-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        .market-filter-group { display: flex; flex-wrap: wrap; gap: 8px; }
+        .filter-pill {
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid #d5dcda;
+            background: #fff;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #4b6364;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .filter-pill:hover { border-color: var(--placom-green); color: var(--placom-green); }
+        .filter-pill.active {
+            background: linear-gradient(135deg, var(--placom-green), #2a8f59);
+            color: #fff;
+            border-color: transparent;
+        }
+        .market-controls-right { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+        .market-search-wrap { position: relative; min-width: 220px; }
+        .market-search-wrap svg {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            color: #9aa8a3;
+            pointer-events: none;
+        }
+        .market-search-input {
+            width: 100%;
+            padding: 8px 16px 8px 40px;
+            border-radius: 8px;
+            border: 1px solid #d5dcda;
+            font-size: 0.88rem;
+            background: #fff;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .market-search-input:focus { border-color: var(--placom-green); }
+        .btn-refresh {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: 1px solid #d5dcda;
+            background: #fff;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #1f7a43;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn-refresh:hover { background: #f0fdf4; border-color: var(--placom-green); }
+        .btn-refresh svg { width: 14px; height: 14px; transition: transform 0.4s ease; }
+        .btn-refresh.is-loading svg { animation: marketSpin 0.8s linear infinite; }
+        @keyframes marketSpin { to { transform: rotate(360deg); } }
+
+        .market-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 16px;
+            margin-bottom: 48px;
+        }
+        .market-stat-card {
+            background: #fff;
+            border: 1px solid #e0e3e0;
+            border-radius: 12px;
+            padding: 24px;
+        }
+        .market-stat-value { font-size: 1.9rem; font-weight: 700; color: #112c2a; line-height: 1.2; }
+        .market-stat-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #6b7d78;
+            font-weight: 700;
+            margin-top: 4px;
+        }
+
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 24px;
+        }
+        .price-card {
+            background: #fff;
+            border-radius: 12px;
+            border: 1px solid #e0e3e0;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .price-card:hover { transform: translateY(-4px); box-shadow: 0 10px 26px rgba(0,0,0,0.1); }
+        .price-card-category {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #006b59;
+        }
+        .price-card-category--mineral { color: #9a6f10; }
+        .price-card-category--livestock { color: #1f5fae; }
+        .price-card-name { font-size: 1.1rem; font-weight: 700; color: #112c2a; margin: 0; line-height: 1.3; }
+        .price-card-market { font-size: 0.82rem; color: #6b7d78; margin: 0; }
+        .price-card-footer {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 8px;
+            margin-top: 12px;
+            padding-top: 16px;
+            border-top: 1px solid #ececeb;
+        }
+        .price-card-amount { font-size: 1.4rem; font-weight: 700; color: #112c2a; line-height: 1; }
+        .price-card-unit { font-size: 0.72rem; color: #6b7d78; margin-top: 2px; }
+        .price-change {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+        .price-change--up { color: #19824c; background: rgba(25,130,76,0.1); }
+        .price-change--down { color: #c0392b; background: rgba(192,57,43,0.1); }
+        .price-change--flat { color: #6b7d78; background: rgba(107,125,120,0.1); }
+        .price-card-updated { font-size: 0.7rem; color: #9aa8a3; margin: 8px 0 0; }
+
+        .price-card-skeleton {
+            min-height: 168px;
+            background: linear-gradient(100deg, #f0f1f0 30%, #f8f8f7 50%, #f0f1f0 70%);
+            background-size: 200% 100%;
+            animation: marketShimmer 1.4s ease-in-out infinite;
+        }
+        @keyframes marketShimmer { to { background-position: -200% 0; } }
+
+        .market-empty-state, .market-error-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 64px 24px;
+            color: #6b7d78;
+            font-size: 0.95rem;
+            background: #fff;
+            border: 1px dashed #d5dcda;
+            border-radius: 12px;
+        }
+        .market-disclaimer {
+            font-size: 0.78rem;
+            color: #8a9892;
+            margin-top: 24px;
+            text-align: center;
+        }
+
+        @media (max-width: 991.98px) {
+            .market-stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .price-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .market-toolbar { flex-direction: column; align-items: stretch; }
+            .market-controls-right { justify-content: space-between; }
+        }
+        @media (max-width: 575.98px) {
+            .market-stats-grid { grid-template-columns: 1fr; }
+            .price-grid { grid-template-columns: 1fr; }
+            .market-search-wrap { min-width: 0; flex: 1; }
+        }
+    </style>
+</head>
+
+<body>
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <span class="brand-icon" aria-hidden="true">
+                    <img src="assets/img/logo.svg" alt="PLACOM Logo" class="logo-img">
+                </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Company</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="about.html">About</a></li>
+                        <li><a class="dropdown-item" href="what-we-do.html">What We Do</a></li>
+                        <li><a class="dropdown-item" href="leadership.html">Leadership</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Engage</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="invest.html">Invest</a></li>
+                        <li><a class="dropdown-item" href="export.html">Export</a></li>
+                        <li><a class="dropdown-item" href="tourism.html">Tourism</a></li>
+                        <li><a class="dropdown-item" href="register.html">Farmer Registration</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="commodities.html">Commodities</a></li>
+                <li class="nav-item"><a class="nav-link active" href="market-prices.html">Market Prices</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                <li class="nav-item ms-lg-2"><a class="btn btn-nav-cta" href="invest.html">Partner With Us</a></li>
+            </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section hero-market-prices">
+        <div class="hero-overlay"></div>
+        <div class="container px-4 px-lg-5 hero-content">
+            <p class="hero-eyebrow mb-3">MARKET DATA</p>
+            <h1 class="hero-title mb-4">Live Commodity &amp; Mineral Prices</h1>
+            <p class="hero-description mb-5">
+                Indicative prices for Plateau State's leading agricultural, livestock and mineral commodities across major local markets — maintained by PLACOM's market intelligence desk.
+            </p>
+        </div>
+    </section>
+</header>
+
+<main>
+    <section class="info-section section-services">
+        <div class="container px-4 px-lg-5">
+            <div class="row justify-content-center text-center mb-5">
+                <div class="col-12 col-lg-8">
+                    <p class="section-kicker mb-3">MARKET OVERVIEW</p>
+                    <h2 class="section-title section-title-centered mb-4">Where Plateau's commodities stand today.</h2>
+                    <p class="section-text section-text-centered mb-0">
+                        Filter by sector or search a specific commodity to see current indicative pricing and recent movement.
+                    </p>
+                </div>
+            </div>
+
+            <div class="market-stats-grid" id="market-stats"></div>
+
+            <div class="market-toolbar">
+                <div class="market-filter-group" id="market-filters">
+                    <button type="button" class="filter-pill active" data-category="All">All</button>
+                    <button type="button" class="filter-pill" data-category="Agricultural">Agricultural</button>
+                    <button type="button" class="filter-pill" data-category="Mineral">Minerals</button>
+                    <button type="button" class="filter-pill" data-category="Livestock">Livestock</button>
+                </div>
+                <div class="market-controls-right">
+                    <div class="market-search-wrap">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3" stroke-linecap="round"/></svg>
+                        <input type="search" id="market-search" class="market-search-input" placeholder="Search commodity or market...">
+                    </div>
+                    <button type="button" class="btn-refresh" id="market-refresh">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.36"/><path d="M21 4v5h-5"/></svg>
+                        Refresh
+                    </button>
+                </div>
+            </div>
+
+            <div class="price-grid" id="price-grid" role="list">
+                <div class="price-card price-card-skeleton" role="listitem"></div>
+                <div class="price-card price-card-skeleton" role="listitem"></div>
+                <div class="price-card price-card-skeleton" role="listitem"></div>
+                <div class="price-card price-card-skeleton" role="listitem"></div>
+            </div>
+
+            <p class="market-disclaimer">Prices are indicative reference figures and may vary by location and trader. Always confirm before transacting.</p>
+        </div>
+    </section>
+
+    <section class="join-section">
+        <div class="join-overlay"></div>
+        <div class="container px-4 px-lg-5 join-content text-center">
+            <h2 class="join-title mb-4">Are You a Farmer or Cooperative?</h2>
+            <p class="join-text mb-4">
+                Register with PLACOM to get listed in our producer network and gain access to market linkage, certification, and price stabilization support.
+            </p>
+            <a href="register.html" class="btn btn-gold join-btn px-4 py-3">Register Now <span class="ms-1">→</span></a>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="container px-4 px-lg-5 footer-inner">
+        <div class="footer-top">
+            <div class="footer-brand-col">
+                <a class="footer-brand" href="index.html">
+                    <img src="assets/img/logo-footer.svg" alt="PLACOM Logo" class="footer-logo-img">
+                </a>
+                <p class="footer-intro mb-0">
+                    Integrated commodity marketing, supply chain management, and agro–solid minerals industrial facilitation for Plateau State and beyond.
+                </p>
+            </div>
+            <div class="footer-links-col">
+                <p class="footer-heading mb-3">COMPANY</p>
+                <ul class="footer-links list-unstyled mb-0">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="leadership.html">Leadership</a></li>
+                    <li><a href="what-we-do.html">Services</a></li>
+                    <li><a href="ecosystem.html">Ecosystem</a></li>
+                    <li><a href="commodities.html">Commodities</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-col">
+                <p class="footer-heading mb-3">ENGAGE</p>
+                <ul class="footer-links list-unstyled mb-0">
+                    <li><a href="tourism.html">Tourism</a></li>
+                    <li><a href="invest.html">Invest</a></li>
+                    <li><a href="export.html">Export &amp; Trade</a></li>
+                    <li><a href="warehouse.html">Warehouses</a></li>
+                    <li><a href="market-prices.html">Market Prices</a></li>
+                    <li><a href="register.html">Farmer Registration</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="insights.html">Insights</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-col">
+                <p class="footer-heading mb-3">LOCATION</p>
+                <p class="footer-location mb-0">JD Gomwalk Secretariat<br>Jos, Plateau State<br>Nigeria</p>
+            </div>
+        </div>
+        <div class="footer-social-row">
+            <p class="footer-heading mb-0" style="font-size:0.7rem;letter-spacing:0.1em;">FOLLOW US</p>
+            <a href="https://facebook.com/placomlimited" target="_blank" rel="noopener" class="footer-social-link" aria-label="Facebook">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://x.com/placomlimited" target="_blank" rel="noopener" class="footer-social-link" aria-label="X (Twitter)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://instagram.com/placomlimited" target="_blank" rel="noopener" class="footer-social-link" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://youtube.com/@placomlimited" target="_blank" rel="noopener" class="footer-social-link" aria-label="YouTube">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#1a2e1a"/></svg>
+            </a>
+        </div>
+        <div class="footer-rule" aria-hidden="true"></div>
+        <div class="footer-bottom">
+            <p class="footer-legal mb-0">© 2026 PLACOM. All rights reserved.</p>
+            <p class="footer-initiative mb-0">A Plateau State Government Initiative</p>
+        </div>
+    </div>
+</footer>
+<script src="js/site.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script>
+(function () {
+    const state = { all: [], category: 'All', query: '' };
+    const grid = document.getElementById('price-grid');
+    const statsRow = document.getElementById('market-stats');
+    const pills = document.querySelectorAll('.filter-pill');
+    const searchInput = document.getElementById('market-search');
+    const refreshBtn = document.getElementById('market-refresh');
+
+    function escapeHtml(str) {
+        return String(str).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    }
+
+    function formatNaira(value) {
+        if (typeof value !== 'number') return '—';
+        return '₦' + value.toLocaleString('en-NG', { maximumFractionDigits: 0 });
+    }
+
+    function formatRelativeTime(iso) {
+        if (!iso) return 'Recently updated';
+        const diffMs = Date.now() - new Date(iso).getTime();
+        const mins = Math.round(diffMs / 60000);
+        if (mins < 1) return 'Updated just now';
+        if (mins < 60) return `Updated ${mins} min${mins === 1 ? '' : 's'} ago`;
+        const hours = Math.round(mins / 60);
+        if (hours < 24) return `Updated ${hours} hour${hours === 1 ? '' : 's'} ago`;
+        const days = Math.round(hours / 24);
+        return `Updated ${days} day${days === 1 ? '' : 's'} ago`;
+    }
+
+    function categoryClass(category) {
+        if (category === 'Mineral') return 'price-card-category--mineral';
+        if (category === 'Livestock') return 'price-card-category--livestock';
+        return '';
+    }
+
+    function changeMarkup(change) {
+        if (typeof change !== 'number' || change === 0) {
+            return '<span class="price-change price-change--flat">– 0.0%</span>';
+        }
+        const isUp = change > 0;
+        return `<span class="price-change ${isUp ? 'price-change--up' : 'price-change--down'}">${isUp ? '▲' : '▼'} ${Math.abs(change).toFixed(1)}%</span>`;
+    }
+
+    function render() {
+        const q = state.query.trim().toLowerCase();
+        const filtered = state.all.filter((item) => {
+            const matchesCategory = state.category === 'All' || item.category === state.category;
+            const matchesQuery = !q || item.commodity.toLowerCase().includes(q) || item.market.toLowerCase().includes(q);
+            return matchesCategory && matchesQuery;
+        });
+
+        if (!filtered.length) {
+            grid.innerHTML = '<div class="market-empty-state">No commodities match your filters right now.</div>';
+            return;
+        }
+
+        grid.innerHTML = filtered.map((item) => `
+            <article class="price-card" role="listitem">
+                <span class="price-card-category ${categoryClass(item.category)}">${escapeHtml(item.category)}</span>
+                <h3 class="price-card-name">${escapeHtml(item.commodity)}</h3>
+                <p class="price-card-market">${escapeHtml(item.market)}</p>
+                <div class="price-card-footer">
+                    <div>
+                        <div class="price-card-amount">${formatNaira(item.price)}</div>
+                        <div class="price-card-unit">per ${escapeHtml(item.unit)}</div>
+                    </div>
+                    ${changeMarkup(item.changePercent)}
+                </div>
+                <p class="price-card-updated">${formatRelativeTime(item.lastUpdated)}</p>
+            </article>
+        `).join('');
+    }
+
+    function renderStats() {
+        if (!state.all.length) {
+            statsRow.innerHTML = '';
+            return;
+        }
+        const markets = new Set(state.all.map((i) => i.market)).size;
+        const changes = state.all.filter((i) => typeof i.changePercent === 'number');
+        const avgChange = changes.length ? changes.reduce((sum, i) => sum + i.changePercent, 0) / changes.length : 0;
+        const newest = state.all.reduce((latest, i) => {
+            const t = i.lastUpdated ? new Date(i.lastUpdated).getTime() : 0;
+            return t > latest ? t : latest;
+        }, 0);
+
+        statsRow.innerHTML = `
+            <div class="market-stat-card"><div class="market-stat-value">${state.all.length}</div><div class="market-stat-label">Commodities Tracked</div></div>
+            <div class="market-stat-card"><div class="market-stat-value">${markets}</div><div class="market-stat-label">Markets Monitored</div></div>
+            <div class="market-stat-card"><div class="market-stat-value">${avgChange >= 0 ? '+' : ''}${avgChange.toFixed(1)}%</div><div class="market-stat-label">Avg. Weekly Change</div></div>
+            <div class="market-stat-card"><div class="market-stat-value">${newest ? formatRelativeTime(new Date(newest).toISOString()).replace('Updated ', '') : '—'}</div><div class="market-stat-label">Last Updated</div></div>
+        `;
+    }
+
+    async function loadData(showSkeleton) {
+        if (showSkeleton) {
+            grid.innerHTML = Array.from({ length: 4 }).map(() => '<div class="price-card price-card-skeleton" role="listitem"></div>').join('');
+        }
+        refreshBtn.classList.add('is-loading');
+        try {
+            const response = await fetch('/api/market-data');
+            const body = await response.json();
+            if (!response.ok) throw new Error(body.error || 'Unable to load market data.');
+            state.all = body.data || [];
+            render();
+            renderStats();
+        } catch (err) {
+            console.error('[market-prices]', err);
+            grid.innerHTML = '<div class="market-error-state">Market data is temporarily unavailable. Please check back shortly.</div>';
+        } finally {
+            refreshBtn.classList.remove('is-loading');
+        }
+    }
+
+    pills.forEach((pill) => {
+        pill.addEventListener('click', () => {
+            pills.forEach((p) => p.classList.remove('active'));
+            pill.classList.add('active');
+            state.category = pill.dataset.category;
+            render();
+        });
+    });
+
+    searchInput.addEventListener('input', () => {
+        state.query = searchInput.value;
+        render();
+    });
+
+    refreshBtn.addEventListener('click', () => loadData(false));
+
+    loadData(true);
+    setInterval(() => loadData(false), 5 * 60 * 1000);
+})();
+</script>
+</body></html>
