@@ -260,7 +260,7 @@ a, button, [role="button"] {
 .hero-invest     { background-image: url("https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1900&q=80"); }
 .hero-insights   { background-image: url("https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1900&q=80"); }
 .hero-contact    { background-image: url("https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=1900&q=80"); }
-.hero-market-prices { background-image: url("https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=1900&q=80"); }
+.hero-market-prices { background-image: url("../assets/img/maize-corn.jpg"); }
 .hero-register   { background-image: url("https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1900&q=80"); }
 
 .hero-section::before {
@@ -2063,11 +2063,24 @@ a, button, [role="button"] {
 
 .value-chain {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: center;
     justify-content: center;
     gap: 0.9rem;
     margin-top: 0.2rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.6rem;
+    scrollbar-width: thin;
+}
+
+.value-chain::-webkit-scrollbar {
+    height: 4px;
+}
+
+.value-chain::-webkit-scrollbar-thumb {
+    background: rgba(27, 122, 70, 0.3);
+    border-radius: 4px;
 }
 
 .value-node {
@@ -3192,7 +3205,7 @@ a, button, [role="button"] {
 }
 
 /* ── New page hero backgrounds ── */
-.hero-commodities { background-image: url("https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?auto=format&fit=crop&w=1900&q=80"); }
+.hero-commodities { background-image: url("../assets/img/soybeans.jpg"); }
 .hero-tourism     { background-image: url("https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=1900&q=80"); }
 
 /* ── Desktop nav: tighten spacing for 8 items ── */
